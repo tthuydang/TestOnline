@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  title: MyString
+  image: MyString
+  description: MyText
+  max_time: 2020-08-15 14:24:01
+  category: one
+  user: one
+
+two:
+  code: MyString
+  title: MyString
+  image: MyString
+  description: MyText
+  max_time: 2020-08-15 14:24:01
+  category: two
+  user: two
