@@ -1,0 +1,2 @@
+class SubTicketsController < ApplicationController
+end
