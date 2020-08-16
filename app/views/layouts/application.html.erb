@@ -10,6 +10,24 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div>
+      <%= render 'shared/navigation' %>
+    </div>
+
+    <div class="container">
+      <div class="row" style="padding-top:10%">
+        <div class="col-md-2">
+          <%= render 'shared/listgroup' %>
+        </div>
+
+          <div class="col-md-8">
+            <%= yield %>
+          </div>
+
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+
   </body>
 </html>
