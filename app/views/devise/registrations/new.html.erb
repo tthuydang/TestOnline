@@ -5,6 +5,20 @@
 
   <div class="field">
     <p>
+      <%= f.label :firstname %><br />
+      <%= f.text_field :firstname, class:"form-control" %>
+    </p>
+  </div>
+
+  <div class="field">
+    <p>
+      <%= f.label :lastname %><br />
+      <%= f.text_field :lastname, class:"form-control" %>
+    </p>
+  </div>
+
+  <div class="field">
+    <p>
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
     </p>

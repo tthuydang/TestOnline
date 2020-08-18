@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Test Online</a>
+  <a class="navbar-brand" href="">Test Online</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,7 +11,7 @@
       </li>
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <a class="nav-link" href="">hi <span style="color: red"><%= current_user.email %></span></a>
+          <a class="nav-link" href="">Hi <b style="color: red"><%= "#{current_user.firstname} #{current_user.lastname}" %></b></a>
         </li>
         <li class="nav-item active">
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
