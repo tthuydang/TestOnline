@@ -1,0 +1,15 @@
+<div class="field" style="50%">
+<%= form_for(@category) do |f| %>
+  <p>
+    <%= f.label :title %> <br>
+    <%= f.text_field :title, class:"form-control" %>
+  </p>
+  <p>
+    <%= f.label :image %> <br>
+    <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.submit class:"btn btn-success" %>
+  </p>
+<% end %>
+</div>
