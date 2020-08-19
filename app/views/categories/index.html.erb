@@ -1,0 +1,33 @@
+<h2 style="color: gray">Your Categories:</h2>
+<% if current_user.categories.size == 0 %>
+  <tr>null</tr>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr style="text-align: center">
+        <th scope="col">#</th>
+        <th scope="col">Category</th>
+        <th scope="col">Total Ticket</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.categories.each_with_index do |item, i| %>
+        <tr style="text-align: center">
+          <th scope="row"><%= i %></th>
+          <td><%= item.title %></td>
+          <td>123</td>
+          <td>
+            <%= link_to("Add Ticket", root_path, class:"btn btn-primary") %>
+            <%= link_to("Edit", root_path, class:"btn btn-warning") %>
+            <%= link_to("Delete", root_path, class:"btn btn-danger") %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<div style="margin-top: 20px">
+  <%= link_to("Add new Category", new_category_path, class:"btn btn-success") %>
+</div>
