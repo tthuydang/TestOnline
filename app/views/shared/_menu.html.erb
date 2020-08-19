@@ -1,9 +1,7 @@
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action disabled">Categories</a>
-  <% @categories.each do |item| %>
-  <a href="" class="list-group-item list-group-item-action"><%= item.title %></a>
-  <% end %>
-  <% if current_user %>
-    <%= link_to("options", categories_path, class:"list-group-item list-group-item-action text-center") %>
-  <% end %>
+  <a href="#" class="list-group-item list-group-item-action">Math</a>
+  <a href="#" class="list-group-item list-group-item-action">Physical</a>
+  <a href="#" class="list-group-item list-group-item-action">Chemistry</a>
+  <!-- %= link_to("+", new_category_path, class:"list-group-item list-group-item-action text-center") % -->
 </div>
