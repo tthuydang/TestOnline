@@ -1,0 +1,9 @@
+<tr style="text-align: center">
+  <td><%= item.title %></td>
+  <td>123</td>
+  <td>
+    <%= link_to("Add Ticket", root_path, class:"btn btn-primary") %>
+    <%= link_to("Edit", edit_category_path(item), class:"btn btn-warning") %>
+    <%= link_to("Delete", category_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger") %>
+  </td>
+</tr>
