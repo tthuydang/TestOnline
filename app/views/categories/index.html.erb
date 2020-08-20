@@ -1,0 +1,21 @@
+<h2 style="color: gray">Your Categories:</h2>
+<% if current_user.categories.size == 0 %>
+  <tr>null</tr>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr style="text-align: center">
+        <th scope="col">Category</th>
+        <th scope="col">Total Ticket</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "/shared/categories", collection: current_user.categories, as: :item %>
+    </tbody>
+  </table>
+<% end %>
+
+<div style="margin-top: 20px">
+  <%= link_to("Add new Category", new_category_path, class:"btn btn-success") %>
+</div>
