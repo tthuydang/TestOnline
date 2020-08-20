@@ -1,7 +1,15 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, html: { mutiport: true }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <p>
+    <%= f.label :avatar %><br />
+    <%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
+    <%= f.file_field :avatar %>
+    </p>
+  </div> 
 
    <div class="field">
     <%= f.label :firstname %><br />
