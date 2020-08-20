@@ -6,7 +6,7 @@
   <div class="field">
     <p>
     <%= f.label :avatar %><br />
-    <%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
+    <%= avatar_for(@user) %>
     <%= f.file_field :avatar %>
     </p>
   </div> 
