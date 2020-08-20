@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  mount LetterOpenerWeb::Engine, at: "/letter_opener_web" if Rails.env.development?
+  devise_for :users, controller: { registrations: "registrations" }
   resources :tickets
   resources :categories
   root "tickets#index"
