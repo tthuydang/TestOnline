@@ -1,7 +1,7 @@
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action disabled">Categories</a>
   <% @categories.each do |item| %>
-  <a href="" class="list-group-item list-group-item-action"><%= item.title %></a>
+    <%= link_to("#{item.title}", root_path, class: "list-group-item list-group-item-action") %>
   <% end %>
   <% if current_user %>
     <%= link_to("options", categories_path, class:"list-group-item list-group-item-action text-center") %>
