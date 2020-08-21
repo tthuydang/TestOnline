@@ -14,7 +14,7 @@
             <%= "#{current_user.firstname} #{current_user.lastname}" %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to("Your Ticket", tickets_path, class: "dropdown-item") %>
+            <%= link_to("Your Tickets", tickets_path, class: "dropdown-item") %>
             <%= link_to("Your Categories", categories_path, class: "dropdown-item") %>
             <div class="dropdown-divider"></div>
             <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
