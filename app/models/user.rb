@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
   VALID_NAME_REGEX = /\A[^0-50`!@#\$%\^&*+_=]+\z/i
   validates :firstname, :lastname, presence: true, format: { with: VALID_NAME_REGEX }
