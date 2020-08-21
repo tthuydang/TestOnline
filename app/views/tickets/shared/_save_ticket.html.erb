@@ -1,0 +1,33 @@
+<%= form_for(@ticket) do |f| %>
+  <p>
+    <%= f.label :code %>
+    <%= f.text_field :code, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :category_id, "Subject" %>
+    <%= f.select "category_id", options_from_collection_for_select(@categories, "id", "title"), {}, class: "form-control" %>
+  </p>
+  <p>
+    <%= image_tag @ticket.image.url(:thumb) if @ticket.image? %>
+    <%= f.label :image %> <br>
+    <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :max_time %>
+    <%= f.time_field :max_time, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.hidden_field :user_id, value:current_user.id %>
+  </p>
+  <p>
+    <%= f.submit class: "btn btn-success" %>
+  </p>
+<% end %>

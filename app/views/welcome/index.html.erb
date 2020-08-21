@@ -1,0 +1,51 @@
+<div>
+  <h2 style="color: gray">Newest tickets:</h2> <br>
+</div>
+<div class="row">
+  <% @tickets.each do |ticket| %>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <% if ticket.image? %>
+          <%= image_tag ticket.image.url(:thumb), :size => '100%xauto' %>
+        <% else %>
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#55595c"/>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em">De so 1</text>
+          </svg>
+        <% end %>
+        <div class="card-body" style="background-color: yellow">
+          <h5 style="color: red">
+            <%= truncate("#{ticket.title}", length: 20) %>
+          </h5>
+          <p class="card-text" style="color: gray">
+            <%= truncate("#{ticket.description}", length: 65) %>
+          </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>

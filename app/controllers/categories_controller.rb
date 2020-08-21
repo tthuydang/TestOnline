@@ -1,4 +1,11 @@
 class CategoriesController < ApplicationController
+  before_action :check_creator
+
+  def check_creator
+    if current_user == nil || current_user.role != "CREATOR"
+      redirect_to root_path
+    end
+  end
 
   def index
   end
