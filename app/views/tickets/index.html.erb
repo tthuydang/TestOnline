@@ -10,17 +10,7 @@
       </tr>
     </thead>
     <tbody>
-    <% @tickets.each do |ticket| %>
-      <tr>
-        <td><%= ticket.code %></td>
-        <td><%= ticket.title %></td>
-        <td><%= ticket.category.title %></td>
-        <td style="text-align: center">
-          <%= link_to("Edit", edit_ticket_path(ticket), class: "btn btn-info") %>
-          <%= link_to("Delete", ticket_path(ticket), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning") %>
-        </td>
-      </tr>
-    <% end %>
+      <%= render partial: "/tickets/shared/ticket_item", collection: @tickets, as: :ticket %>
     </tbody>
   </table>
 

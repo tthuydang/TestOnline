@@ -3,7 +3,4 @@
   <% @categories.each do |item| %>
     <%= link_to("#{item.title}", categories_path(:subject => item.title), class: "list-group-item list-group-item-action") %>
   <% end %>
-  <% if current_user %>
-    <%= link_to("options", categories_path, class:"list-group-item list-group-item-action text-center") %>
-  <% end %>
 </div>

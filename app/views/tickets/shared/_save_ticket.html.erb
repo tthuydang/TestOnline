@@ -1,4 +1,5 @@
 <%= form_for(@ticket) do |f| %>
+  <%= render "devise/shared/error_messages", resource: @ticket %>
   <p>
     <%= f.label :code %>
     <%= f.text_field :code, class: "form-control" %>
