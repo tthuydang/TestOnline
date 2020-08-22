@@ -1,6 +1,7 @@
-<div>
-  <h2 style="color: gray">Newest tickets:</h2> <br>
-</div>
+<h2 style="color: gray">Newest tickets:</h2> <br>
+
+<%= pagy_bootstrap_nav(@pagy).html_safe %>
+
 <div class="row">
   <% @tickets.each do |ticket| %>
     <div class="col-md-4">
@@ -31,6 +32,8 @@
     </div>
   <% end %>
 </div>
+
+<%= pagy_bootstrap_nav(@pagy).html_safe %>
 
 <style>
   .bd-placeholder-img {
