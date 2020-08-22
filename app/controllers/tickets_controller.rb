@@ -19,8 +19,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.save
-    redirect_to tickets_path
-    # render plain: ticket_params
+    render :new
   end
 
   def edit
@@ -32,7 +31,7 @@ class TicketsController < ApplicationController
     if @ticket.update(ticket_params)
       redirect_to tickets_path
     else
-      redirect_to :edit
+      render :edit
     end
   end
 

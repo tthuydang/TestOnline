@@ -1,8 +1,9 @@
 <div class="field" style="50%">
   <%= form_for(@category) do |f| %>
+    <%= render "devise/shared/error_messages", resource: @category %>
     <p>
       <%= f.label :title %> <br>
-      <%= f.text_field :title, minlength: 2, class:"form-control" %>
+      <%= f.text_field :title, class:"form-control" %>
     </p>
     <p>
       <% f.label :user_id %>
