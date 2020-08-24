@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
       @pagy, @tickets = pagy(curr_category.tickets, items: 3)
     else
       @title = "Newest tickets"
-      @pagy, @tickets = pagy(Ticket.all, items: 2)
+      @pagy, @tickets = pagy(Ticket.all, items: 3)
     end
   end
 end
