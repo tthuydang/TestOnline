@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+class Guest::WelcomeController < ApplicationController
   include Pagy::Backend
 
   def index
@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
       @pagy, @tickets = pagy(curr_category.tickets, items: 3)
     else
       @title = "Newest tickets"
-      @pagy, @tickets = pagy(Ticket.all, items: 3)
+      @pagy, @tickets = pagy(Ticket.all, items: 6)
     end
   end
 end

@@ -6,10 +6,6 @@
       <%= f.text_field :title, class:"form-control" %>
     </p>
     <p>
-      <% f.label :user_id %>
-      <%= f.hidden_field :user_id, value:current_user.id %>
-    </p>
-    <p>
       <%= f.submit class:"btn btn-success" %>
     </p>
   <% end %>
