@@ -1,11 +1,5 @@
-class CategoriesController < ApplicationController
-  before_action :check_creator
-
-  def check_creator
-    if current_user == nil || current_user.role != "CREATOR"
-      redirect_to root_path
-    end
-  end
+class Creator::CategoriesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
   end
@@ -16,6 +10,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    @category.user_id = current_user.id
     if @category.save
       redirect_to categories_path
     else
@@ -45,7 +40,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:title, :user_id)
+    params.require(:category).permit(:title)
   end
-
 end
