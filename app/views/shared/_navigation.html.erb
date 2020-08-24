@@ -9,14 +9,20 @@
       <% if user_signed_in? %>
         <li class="nav-item active nav-link"><%= link_to(avatar_for(current_user, size: 20)) %>
         </li>
-         <li class="nav-item active ">
-          <%= link_to "#{current_user.firstname} #{current_user.lastname}", edit_user_registration_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Edit", edit_user_registration_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= "#{current_user.firstname} #{current_user.lastname}" %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% if current_user.role == "CREATOR" %>
+              <%= link_to("Your Tickets", tickets_path, class: "dropdown-item") %>
+              <%= link_to("Your Categories", categories_path, class: "dropdown-item") %>
+              <div class="dropdown-divider"></div>
+            <% end %>
+            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
         </li>
       <% else %>
         <li class="nav-item active">
@@ -32,5 +38,6 @@
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+
   </div>
 </nav>

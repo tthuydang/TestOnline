@@ -1,4 +1,11 @@
 class CategoriesController < ApplicationController
+  before_action :check_creator
+
+  def check_creator
+    if current_user == nil || current_user.role != "CREATOR"
+      redirect_to root_path
+    end
+  end
 
   def index
   end
@@ -9,11 +16,10 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if category_params[:title].strip == '' || Category.find_by_title(category_params[:title]).present?
-      render new_category_path
-    else
-      @category.save
+    if @category.save
       redirect_to categories_path
+    else
+      render :new
     end
   end
 
@@ -26,7 +32,7 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to categories_path
     else
-      render 'edit'
+      render :edit
     end
   end
 
