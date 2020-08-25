@@ -10,12 +10,12 @@
   </p>
   <p>
     <%= f.label :category_id, "Subject" %>
-    <%= f.select "category_id", options_from_collection_for_select(@categories, "id", "title"), {}, class: "form-control" %>
+    <%= f.select "category_id", options_from_collection_for_select(@categories, "id", "title", :selected => @ticket.category_id), {}, class: "form-control" %>
   </p>
   <p>
     <%= image_tag @ticket.image.url(:thumb) if @ticket.image? %>
     <%= f.label :image %> <br>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, class: "form-control"%>
   </p>
   <p>
     <%= f.label :description %>
@@ -23,10 +23,7 @@
   </p>
   <p>
     <%= f.label :max_time %>
-    <%= f.time_field :max_time, class: "form-control" %>
-  </p>
-  <p>
-    <%= f.hidden_field :user_id, value:current_user.id %>
+    <%= f.time_select :max_time, class: "form-control" %>
   </p>
   <p>
     <%= f.submit class: "btn btn-success" %>

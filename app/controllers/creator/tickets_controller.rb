@@ -1,11 +1,5 @@
-class TicketsController < ApplicationController
-  before_action :check_creator
-
-  def check_creator
-    if current_user == nil || current_user.role != "CREATOR"
-      redirect_to root_path
-    end
-  end
+class Creator::TicketsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @tickets = current_user.tickets
@@ -18,8 +12,12 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
-    @ticket.save
-    render :new
+    @ticket.user_id = current_user.id
+    if @ticket.save
+      redirect_to tickets_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -44,6 +42,6 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:code, :title, :image, :description, :max_time, :category_id, :user_id)
+    params.require(:ticket).permit(:code, :title, :image, :description, :max_time, :category_id)
   end
 end
