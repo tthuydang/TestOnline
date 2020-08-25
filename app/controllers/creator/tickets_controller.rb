@@ -11,6 +11,12 @@ class Creator::TicketsController < ApplicationController
   end
 
   def create
+    # đọc file rồi lưu câu hỏi vào database rồi mới save ticket sau
+    file_path = ticket_params[:file_question].path
+    read_file_text(file_path)
+
+
+
     @ticket = Ticket.new(ticket_params)
     @ticket.user_id = current_user.id
     if @ticket.save
@@ -42,6 +48,26 @@ class Creator::TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:code, :title, :image, :description, :max_time, :category_id)
+    params.require(:ticket).permit(:file_question, :code, :title, :image, :description, :max_time, :category_id)
   end
+
+  def read_file_text(file_path)
+    file = File.new(file_path, 'r')
+    questions = []
+    while line = file.gets
+      puts "#{line}"
+      # tách câu hỏi ra
+      # tách các câu trả lời ra
+      curr_question = {
+        question: "",
+        answers: {
+          answer: "",
+          is_correct: false
+        }
+      }
+      questions << curr_question
+    end
+    questions
+  end
+
 end
