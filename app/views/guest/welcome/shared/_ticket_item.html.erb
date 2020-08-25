@@ -1,0 +1,26 @@
+<div class="col-md-4">
+  <div class="card mb-4 shadow-sm">
+    <% if ticket.image? %>
+    <%= image_tag ticket.image.url(:thumb), width: 221, height: 225 %>
+    <% else %>
+    <%= image_tag "learning_english.png", width: 221, height: 225 %>
+    <% end %>
+    <div class="card-body" style="background-color: yellow">
+      <h5 style="color: red">
+        <%= link_to(truncate("#{ticket.title}", length: 20), exam_path(:intro => "welcome", :code => ticket.code), style: 'text-decoration: none;') %>
+      </h5>
+      <b class="card-text" style="color: blue">
+      <%= truncate("#{ticket.category.title}", length: 20) %>
+      </b>
+      <p class="card-text" style="color: gray; font-size: 15px;">
+        <%= truncate("#{ticket.description}", length: 26) %>
+      </p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
