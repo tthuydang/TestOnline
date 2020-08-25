@@ -60,10 +60,12 @@ class Creator::TicketsController < ApplicationController
       # tách các câu trả lời ra
       curr_question = {
         question: "",
-        answers: {
-          answer: "",
-          is_correct: false
-        }
+        answers: [
+          {
+            answer: "",
+            is_correct: false
+          }
+        ]
       }
       questions << curr_question
     end
