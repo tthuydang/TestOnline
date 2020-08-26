@@ -58,7 +58,6 @@ class Creator::TicketsController < ApplicationController
       curr_question.question = quest.question
       curr_question.ticket_id = ticket_id
       curr_question.save
-      puts "---- #{curr_question.id} - #{curr_question.question} - #{curr_question.ticket_id}"
 
       quest.dsAnswers.each_with_index do |ans, i|
         curr_answer = Answer.new
@@ -66,7 +65,6 @@ class Creator::TicketsController < ApplicationController
         curr_answer.is_correct = ans.is_correct
         curr_answer.question_id = curr_question.id
         curr_answer.save
-        puts "#{curr_answer.id} - #{curr_answer.answer} - #{curr_answer.is_correct} - #{curr_answer.question_id}"
       end
     end
   end
