@@ -1,4 +1,5 @@
 class Guest::TicketsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @ticket = Ticket.where(code: params[:code]).first
