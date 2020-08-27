@@ -1,0 +1,6 @@
+<%= form_for :subtickets do |f| %>
+  Amount of test: <%= f.number_field :amount, in: 1...11 %><br/>
+  Random question?    : <%= f.check_box :result_ques %><br />
+  Random answer?    : <%= f.check_box :result_ans %><br />
+  <%= f.submit %>
+<% end %>
