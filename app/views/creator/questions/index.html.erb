@@ -24,7 +24,9 @@
         <% @questions.each_with_index do |qs, i| %>
           <tr>
             <td><%= "Q#{i + 1}: #{qs.question}" %></td>
-            <td><%= link_to("Remove", root_path, class: "btn btn-sm btn-danger") %></td>
+            <td>
+              <%= link_to("Remove", question_path(qs), method: :delete, data: { confirm: 'Are you certain?' }, class:"btn btn-warning") %>
+            </td>
           </tr>
         <% end %>
       </tbody>

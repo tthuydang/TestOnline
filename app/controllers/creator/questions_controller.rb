@@ -14,7 +14,13 @@ class Creator::QuestionsController < ApplicationController
     Question.where(:ticket_id => question_file_param[:ticket_id]).destroy_all
     save_to_database(questions, question_file_param[:ticket_id])
 
-    redirect_back(fallback_location: questions_path)
+    redirect_back(fallback_location: questions_path) # load lại trang và giữ nguyên parameter trên url
+  end
+
+  def destroy
+    question = Question.find(params[:id])
+    question.destroy
+    redirect_back(fallback_location: questions_path) # load lại trang và giữ nguyên parameter trên url
   end
 
   private
