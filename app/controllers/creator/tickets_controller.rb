@@ -20,6 +20,8 @@ class Creator::TicketsController < ApplicationController
       if @ticket.save
         save_to_database(questions, @ticket.id) if questions != nil
         redirect_to tickets_path
+      else
+        render :new
       end
     rescue => exception
       render :new
