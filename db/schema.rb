@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_032013) do
+ActiveRecord::Schema.define(version: 2020_08_25_083327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.text "answer"
+    t.boolean "is_correct"
+    t.bigint "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -22,6 +31,27 @@ ActiveRecord::Schema.define(version: 2020_08_25_032013) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.integer "total_question"
+    t.integer "total_correct"
+    t.boolean "is_passed"
+    t.datetime "completed_time"
+    t.bigint "user_id", null: false
+    t.bigint "ticket_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ticket_id"], name: "index_histories_on_ticket_id"
+    t.index ["user_id"], name: "index_histories_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "question"
+    t.bigint "ticket_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ticket_id"], name: "index_questions_on_ticket_id"
   end
 
   create_table "subtickets", force: :cascade do |t|
@@ -69,7 +99,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_032013) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "categories", "users"
+  add_foreign_key "histories", "tickets"
+  add_foreign_key "histories", "users"
+  add_foreign_key "questions", "tickets"
   add_foreign_key "subtickets", "tickets"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "users"

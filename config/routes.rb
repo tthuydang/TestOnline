@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   resources :charges
   scope module: "guest" do
     root "welcome#index"
+    get "exam", to: "/guest/tickets#index"
+    post "exam", to: "/guest/tickets#create"
+    get "exam/new", to: "/guest/tickets#new"
+    get "exam/:id/edit", to: "/guest/tickets#edit"
+    get "exam/:id", to: "/guest/tickets#show"
+    patch "exam", to: "/guest/tickets#update"
+    put "exam", to: "/guest/tickets#update"
+    delete "exam", to: "/guest/tickets#destroy"
   end
   scope module: "creator" do
     resources :tickets

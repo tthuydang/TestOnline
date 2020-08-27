@@ -1,0 +1,5 @@
+<% if params[:intro] == "welcome" %>
+  <%= render "/guest/tickets/shared/intro" %>
+<% else %>
+  <%= render "/guest/tickets/shared/exam" %>
+<% end %>

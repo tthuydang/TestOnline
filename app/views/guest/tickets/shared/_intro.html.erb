@@ -1,0 +1,16 @@
+<div>
+  <h1 style="color: gray; margin-bottom: 30px">Đề thi: <%= @ticket.code %></h1>
+  <p>
+    <h3 style="color: red"><%= @ticket.title %></h3>
+  </p>
+  <p>
+    <h4 style="color: gray">Subject: <%= @ticket.category.title %></h4>
+  </p>
+  <p>
+    <h4 style="color: gray">Duration: <%= @ticket.max_time.strftime("%H:%M") + "s" %></h4>
+  </p>
+  <p>
+    <h4 style="color: gray">Description: <%= @ticket.description %></h4>
+  </p>
+  <%= link_to("Start", exam_path(:code =>@ticket.code), class: "btn btn-info form-control", style: "margin-top: 50px") %>
+</div>

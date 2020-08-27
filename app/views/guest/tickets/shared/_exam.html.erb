@@ -1,0 +1,18 @@
+<div>
+  <% @questions.each_with_index do |quest, i| %>
+    <div>
+      <p>
+        <span style="font-weight: bold; font-size: 25px"><%= "Question #{i + 1}:" %></span>
+        <span style="font-size: 20px"><%= "#{quest.question}" %></span>
+      </p>
+      <% quest.answers.shuffle.each_with_index do |an, k| %>
+        <div class="checkbox">
+          <label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" value="<%= an.id %>">&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= an.answer %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
