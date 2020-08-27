@@ -25,18 +25,18 @@ class Creator::QuestionsController < ApplicationController
 
   private
 
-  def question_file_param
+  def question_file_param # dùng riêng cho import file
     params.require(:question).permit(:file_question, :ticket_id)
   end
 
   def save_to_database(questions, ticket_id)
-    questions.each_with_index do |quest, index|
+    questions.each do |quest|
       curr_question = Question.new
       curr_question.question = quest.question
       curr_question.ticket_id = ticket_id
       curr_question.save
 
-      quest.dsAnswers.each_with_index do |ans, i|
+      quest.dsAnswers.each do |ans|
         curr_answer = Answer.new
         curr_answer.answer = ans.answer
         curr_answer.is_correct = ans.is_correct
