@@ -25,7 +25,7 @@
           <tr>
             <td><%= "Q#{i + 1}: #{qs.question}" %></td>
             <td>
-              <%= link_to("Remove", question_path(qs), method: :delete, data: { confirm: 'Are you certain?' }, class:"btn btn-warning") %>
+              <%= link_to("Delete", question_path(qs), method: :delete, data: { confirm: 'Are you certain?' }, class:"btn btn-warning") %>
             </td>
           </tr>
         <% end %>
