@@ -16,9 +16,8 @@ class Creator::TicketsController < ApplicationController
       @ticket.user_id = current_user.id
 
       if @ticket.save
-        if file_param[:file_question]
-          file_path = file_param[:file_question].path
-          questions = get_questions_from_file_text(file_path)
+        if file_param[:file_question] # nếu có import file txt thì save danh sách câu hỏi
+          questions = get_questions_from_file_text(file_param[:file_question].path)
           save_to_database(questions, @ticket.id) if questions != nil
         end
         flash[:notice] = "Ticket successfully created."
@@ -37,23 +36,26 @@ class Creator::TicketsController < ApplicationController
   end
 
   def update
-    @ticket = Ticket.find(params[:id])
-    if @ticket.update(ticket_params)
+    begin
+      @ticket = Ticket.find(params[:id])
+      if @ticket.update(ticket_params)
 
-      # nếu có import file txt thì update lại danh sách câu hỏi
-      if file_param[:file_question]
-        file_path = file_param[:file_question].path
-        questions = get_questions_from_file_text(file_path)
+        if file_param[:file_question] # nếu có import file txt thì update lại danh sách câu hỏi
+          questions = get_questions_from_file_text(file_param[:file_question].path)
 
-        # xóa hết question cũ, rồi save_to_database
-        Question.where(:ticket_id => @ticket.id).destroy_all
-        save_to_database(questions, @ticket.id) if questions != nil
+          # xóa hết question cũ, rồi save_to_database
+          Question.where(:ticket_id => @ticket.id).destroy_all
+          save_to_database(questions, @ticket.id) if questions != nil
+        end
+
+        flash[:notice] = "Ticket successfully updated."
+        redirect_to tickets_path
+      else
+        render :edit
       end
-
-      flash[:notice] = "Ticket successfully updated."
-      redirect_to tickets_path
-    else
-      render :edit
+    rescue => exception
+      render :new
+    ensure
     end
   end
 
