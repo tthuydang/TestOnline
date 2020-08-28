@@ -1,9 +1,9 @@
 <div class="col-md-4">
   <div class="card mb-4 shadow-sm">
     <% if ticket.image? %>
-    <%= image_tag ticket.image.url(:thumb), width: 221, height: 225 %>
+      <%= image_tag ticket.image.url(:thumb), width: 221, height: 225 %>
     <% else %>
-    <%= image_tag "learning_english.png", width: 221, height: 225 %>
+      <%= image_tag "learning_english.png", width: 221, height: 225 %>
     <% end %>
     <div class="card-body" style="background-color: yellow">
       <h5 style="color: red">
