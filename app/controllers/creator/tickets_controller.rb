@@ -14,6 +14,7 @@ class Creator::TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
     @ticket.user_id = current_user.id
     if @ticket.save
+      flash[:notice] = "Ticket successfully created."
       redirect_to tickets_path
     else
       render :new
@@ -27,6 +28,7 @@ class Creator::TicketsController < ApplicationController
   def update
     @ticket = Ticket.find(params[:id])
     if @ticket.update(ticket_params)
+      flash[:notice] = "Ticket successfully updated."
       redirect_to tickets_path
     else
       render :edit
@@ -36,6 +38,7 @@ class Creator::TicketsController < ApplicationController
   def destroy
     @ticket = Ticket.find(params[:id])
     @ticket.destroy
+    flash[:notice] = "Ticket successfully deleted."
     redirect_to tickets_path
   end
 
