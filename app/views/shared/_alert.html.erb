@@ -1,0 +1,24 @@
+<% if notice %>
+  <div class="notice alert alert-warning alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% elsif alert %>
+  <div class="notice alert alert-warning alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% elsif flash[:notice] %>
+  <div class="notice alert alert-warning alert-dismissible fade show" role="alert">
+    <%= flash[:notice] %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% else%>
+  <%# not thing to do %>
+<% end %>

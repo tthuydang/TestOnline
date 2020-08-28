@@ -17,14 +17,30 @@
       <thead>
         <tr>
           <th scope="col">Questions</th>
-          <th scope="col">Options</th>
+          <th scope="col" style="text-align: center">Options</th>
         </tr>
       </thead>
       <tbody>
         <% @questions.each_with_index do |qs, i| %>
           <tr>
-            <td><%= "Q#{i + 1}: #{qs.question}" %></td>
             <td>
+              <%= "Q#{i + 1}: #{qs.question}" %> <br>
+              <div class="btn-group">
+                <button style="background-color: #ddeeff" type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Answers
+                </button>
+                <div class="dropdown-menu">
+                  <% qs.answers.each do |ans| %>
+                    <% if ans.is_correct %>
+                      <a class="dropdown-item" style="background-color: green"><%= ans.answer %></a>
+                    <% else %>
+                      <a class="dropdown-item" style="background-color: #ddeeff"><%= ans.answer %></a>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+            <td style="text-align: center">
               <%= link_to("Delete", question_path(qs), method: :delete, data: { confirm: 'Are you certain?' }, class:"btn btn-warning") %>
             </td>
           </tr>
@@ -32,5 +48,4 @@
       </tbody>
     </table>
   </div>
-
 </div>
