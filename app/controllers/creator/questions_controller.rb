@@ -77,7 +77,7 @@ class Creator::QuestionsController < ApplicationController
           is_question = false
         else  # dòng xuống hàng của question hoặc answer
           if is_question  # nối vào question
-            questions[i - 1].question = questions[i - 1].question + " #{line.strip}"
+            questions[i - 1].question += " #{line.strip}"
           else  # nối vào answer
             # nếu xuống hàng có !!!T
             s_correct = line.match(/!!!T$/)    # !!!T
@@ -85,7 +85,7 @@ class Creator::QuestionsController < ApplicationController
 
             # cập nhật lại is_correct và answer
             questions[i - 1].dsAnswers.last.is_correct = true if s_correct != nil
-            questions[i - 1].dsAnswers.last.answer = questions[i - 1].dsAnswers.last.answer + " #{ans_content}"
+            questions[i - 1].dsAnswers.last.answer += " #{ans_content}"
           end
         end
       end
