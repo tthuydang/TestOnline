@@ -6,7 +6,7 @@
     <div style="float: right">
       <%= form_for :question, url: {action: :importfile, controller: :questions} do |f| %>
         <%= f.hidden_field :ticket_id, value:@ticket.id %>
-        <%= f.file_field :file_question, style: "width: 200px" %>
+        <%= f.file_field :file_question, accept: "text/plain", style: "width: 200px" %>
         <%= f.submit "Import", class: "btn btn-success" %>
       <% end %>
     </div>

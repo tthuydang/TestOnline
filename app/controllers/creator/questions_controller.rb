@@ -7,21 +7,25 @@ class Creator::QuestionsController < ApplicationController
   end
 
   def importfile # custom action
-    file_path = question_file_param[:file_question].path
-    questions = file_path != nil ? get_questions_from_file_text(file_path) : nil
+    begin
+      file_path = question_file_param[:file_question].path
+      questions = file_path != nil ? get_questions_from_file_text(file_path) : nil
 
-    # xóa hết question cũ, rồi save_to_database
-    Question.where(:ticket_id => question_file_param[:ticket_id]).destroy_all
-    save_to_database(questions, question_file_param[:ticket_id])
+      # xóa hết question cũ, rồi save_to_database
+      Question.where(:ticket_id => question_file_param[:ticket_id]).destroy_all
+      save_to_database(questions, question_file_param[:ticket_id])
 
-    flash[:notice] = "File successfully imported"
-    redirect_back(fallback_location: questions_path) # load lại trang và giữ nguyên parameter trên url
+      flash[:notice] = "File successfully imported"
+      redirect_back(fallback_location: questions_path) # load lại trang và giữ nguyên parameter trên url
+    rescue => exception
+      flash[:notice] = "File import failed"
+      redirect_back(fallback_location: questions_path) # load lại trang và giữ nguyên parameter trên url
+    end
   end
 
   def destroy
     question = Question.find(params[:id])
     question.destroy
-    flash[:notice] = "Question successfully deleted."
     redirect_back(fallback_location: questions_path) # load lại trang và giữ nguyên parameter trên url
   end
 
