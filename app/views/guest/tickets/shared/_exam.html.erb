@@ -1,5 +1,5 @@
 <div>
-  <% @questions.each_with_index do |quest, i| %>
+  <% @questions.shuffle.each_with_index do |quest, i| %>
     <div>
       <p>
         <span style="font-weight: bold; font-size: 25px"><%= "Question #{i + 1}:" %></span>

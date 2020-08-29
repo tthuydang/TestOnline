@@ -1,22 +1,24 @@
 class Creator::SubticketsController < ApplicationController
   before_action :authenticate_user!
 
-  # def index
-  #   @subtickets = Subticket.all
-  # end
+  def index
+    @subtickets = Subticket.all
+  end
 
-  # def show
-  #   @subticket = Subticket.find(params[:id])
-  # end
+  def show
+    @subticket = Subticket.find(params[:id])
+  end
 
   def new
+    @subticket = Subticket.new
+    @ticket = Ticket.where(code: params[:code]).first
   end
 
   def create
-    @subticket = Subticket.new
-    @subticket.ticket_id = Ticket.where(code: params[:code]).first.id
+    @subticket = Subticket.new(subticket_params)
     if @subticket.save
-      redirect_to root_path
+      # make_subticket(amount, result_ques, result_ans)
+      redirect_to subtickets_path
     else
       render :new
     end
@@ -34,12 +36,26 @@ class Creator::SubticketsController < ApplicationController
   private
 
   def subticket_params
-    params.require(:subticket).permit(:code, :content, :amount, :result_ques, :result_ans)
+    params.require(:subticket).permit(:code, :ticket_id, :amount, :result_ques, :result_ans)
   end
 
-  def make_subticket(amout, result_ques, result_ans)
+  def make_subticket(amount, result_ques, result_ans)
     i = 0
-    while i > amout
+    while i > amount
+      if resul_ques == 1 && result_ans == 1
+      elsif result_ques == 1 && result_ans == 0
+      elsif result_ques == 0 && result_ans == 1
+      else
+      end
+      i += 1
     end
+  end
+
+  def pick_ques
+    ques = Ticket.where(ticket_id: params[:id]).questions
+  end
+
+  def pick_ans
+    ans = Ticket.where(ticket_id: params[:id]).questions.where(question_id: param[:id]).answers
   end
 end

@@ -3,7 +3,7 @@
   <td><%= ticket.title %></td>
   <td><%= ticket.category.title %></td>
   <td style="text-align: center">
-
+    <%= link_to("Sub Ticket", new_subticket_path(:code => ticket.code), class: "btn btn-info") %>
     <%= link_to("Details", questions_path(:ticket_code => ticket.code), class: "btn btn-info") %>
     <%= link_to("Edit", edit_ticket_path(ticket), class: "btn btn-primary") %>
     <%= link_to("Delete", ticket_path(ticket), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning") %>

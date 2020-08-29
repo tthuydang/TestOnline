@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   scope module: "creator" do
     resources :tickets
     resources :categories
-
+    resources :subtickets
     resources :questions
     post "importfile" => "/creator/questions#importfile"
   end
