@@ -1,0 +1,9 @@
+<tr>
+  <td><%= subticket.code %></td>
+  <td><%= subticket.ticket_id %></td>
+ 
+  <td style="text-align: center">
+    <%= link_to("Delete", subticket_path(subticket), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning") %>
+   <%= link_to("Download", download_subticket_path(subticket_id: subticket.id), class: "btn btn-warning") %>
+  </td>
+</tr>

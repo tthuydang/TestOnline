@@ -13,17 +13,19 @@
     
     <div>
       <%= render "shared/navigation" %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %> </p>
+      <%= image_tag("cambridge_banner.png") %>
+      <p class="notice"><% notice %></p>
+      <p class="alert"><% alert %> </p>
     </div>
 
     <div class="container">
-      <div class="row" style="padding-top:10%">
+      <div class="row" style="padding-top:0%">
         <div class="col-md-2">
           <%= render "shared/menu" %>
         </div>
 
           <div class="col-md-8">
+            <%= render("shared/alert") %>
             <%= yield %>
           </div>
 

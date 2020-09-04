@@ -1,0 +1,25 @@
+ENG0001-2
+
+Question 1: what is your pet name ?
+A1: om
+A2: Mickey
+A3: Duck Dolnald
+A4: Jerry 
+
+Question 2: what is your name ? (multi choise)
+A1: Huy
+A2: My
+A3: Nhật
+A4: Vu Khống
+
+Question 3: 123 + 321 ?
+A1: 111
+A2: 222
+A3: 333
+A4: 444 
+
+Question 4: where is the Borough of Danang ?
+A1: Sơn Trà 
+A2: Tam Kỳ
+A3: Đại Lộc
+A4: Hội An
