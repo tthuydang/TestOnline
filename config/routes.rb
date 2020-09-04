@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   scope module: 'guest' do
     root "welcome#index"
+    resources :histories
 
     get "exam", to: "/guest/tickets#index"
     post "exam", to: "/guest/tickets#create"
