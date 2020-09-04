@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :charges
   scope module: "guest" do
     root "welcome#index"
+
+    resources :histories
+
     get "exam", to: "/guest/tickets#index"
     post "exam", to: "/guest/tickets#create"
     get "exam/new", to: "/guest/tickets#new"
