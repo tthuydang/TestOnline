@@ -33,7 +33,12 @@ class Creator::CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
+    if @category.tickets.size == 0
+      @category.destroy
+      flash[:notice] = "Category successfully deleted."
+    else
+      flash[:notice] = "Cannot delete this category."
+    end
     redirect_to categories_path
   end
 

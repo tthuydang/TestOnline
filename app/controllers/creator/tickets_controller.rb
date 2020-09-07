@@ -2,12 +2,12 @@ class Creator::TicketsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tickets = current_user.tickets
+    @tickets = Ticket.where(user_id: current_user.id, delete_at: nil)
   end
 
   def new
     @ticket = Ticket.new
-    @categories = Category.all
+    @categories = Category.where(delete_at: nil)
   end
 
   def create
@@ -60,8 +60,9 @@ class Creator::TicketsController < ApplicationController
   end
 
   def destroy
-    @ticket = Ticket.find(params[:id])
-    @ticket.destroy
+    ticket = Ticket.find(params[:id])
+    ticket.delete_at = Time.now
+    ticket.save
     flash[:notice] = "Ticket successfully deleted."
     redirect_to tickets_path
   end
@@ -101,7 +102,7 @@ class Creator::TicketsController < ApplicationController
     i = 0
     while line = file.gets
       if line.strip.length > 0
-        quest = line.match(/[Q]\s\d{1,999}[\.\:\/\)]/)    # Q 94.:/)
+        quest = line.match(/[Q]\s\d+[\.\:\/\)]/)    # Q 94.:/)
         ans = line.match(/^\w[\.\:\/\)]/)  # a.:/) hoặc A.:/) hoặc 1.:/)
 
         if quest != nil  # question
