@@ -15,10 +15,10 @@ class Creator::QuestionsController < ApplicationController
       Question.where(:ticket_id => question_file_param[:ticket_id]).destroy_all
       save_to_database(questions, question_file_param[:ticket_id])
 
-      flash[:notice] = "File successfully imported"
+      flash[:notice] = "File successfully imported."
       redirect_back(fallback_location: questions_path) # load lại trang và giữ nguyên parameter trên url
     rescue => exception
-      flash[:notice] = "File import failed"
+      flash[:notice] = "File import failed."
       redirect_back(fallback_location: questions_path) # load lại trang và giữ nguyên parameter trên url
     end
   end
@@ -60,7 +60,7 @@ class Creator::QuestionsController < ApplicationController
     i = 0
     while line = file.gets
       if line.strip.length > 0
-        quest = line.match(/[Q]\s\d{1,999}[\.\:\/\)]/)    # Q 94.:/)
+        quest = line.match(/[Q]\s\d+[\.\:\/\)]/)    # Q 94.:/)
         ans = line.match(/^\w[\.\:\/\)]/)  # a.:/) hoặc A.:/) hoặc 1.:/)
 
         if quest != nil  # question
