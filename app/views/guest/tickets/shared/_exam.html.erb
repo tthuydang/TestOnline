@@ -1,43 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="https://toeic24.vn/css/exam.css">
-</head>
-<body>
-  <div class="top-nav">
-    <h4 class="sm black bold"><a href="">Test Online</a></h4>
-    <ul class="top-nav-list">
-      <li><a href=""><b>Test Online</b></a></li>
-      <li class="timer">
-        <a style="font-size: 25px; padding-left: 15px; padding-right: 15px" href=""><b>02:00:00</b></a>
-      </li>
-      <li class="exit">
-        <a href=""><i class="">exit</i></a>
-      </li>
-    </ul>
-  </div>
-
-  <div>
-    <% @questions.each_with_index do |quest, i| %>
-      <div>
-        <p>
-          <span style="font-weight: bold; font-size: 25px"><%= "Question #{i + 1}:" %></span>
-          <span style="font-size: 20px"><%= "#{quest.question}" %></span>
-        </p>
-        <% quest.answers.each_with_index do |an, k| %>
-          <div class="checkbox">
-            <label>&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="checkbox" value="<%= an.id %>">&nbsp;&nbsp;&nbsp;&nbsp;
-              <%= an.answer %>
-            </label>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
-</body>
-</html>
+<div>
+  <% @questions.each_with_index do |quest, i| %>
+    <div>
+      <p>
+        <span style="font-weight: bold; font-size: 25px"><%= "Question #{i + 1}:" %></span>
+        <span style="font-size: 20px"><%= "#{quest.question}" %></span>
+      </p>
+      <% quest.answers.each_with_index do |an, k| %>
+        <div class="checkbox">
+          <label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" value="<%= an.id %>">&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= an.answer %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
