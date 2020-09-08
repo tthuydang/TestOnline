@@ -1,16 +1,17 @@
 <div>
   <% @questions.each_with_index do |quest, i| %>
-    <div>
-      <p>
-        <span style="font-weight: bold; font-size: 25px"><%= "Question #{i + 1}:" %></span>
+    <div class="border border-danger" style="background-color: #FAFAD2; padding: 15px; margin-bottom: 30px">
+      <div style="margin: 15px">
+        <b style="font-size: 25px; color: gray"><%= "Question #{i + 1}:" %></b>
+        <hr>
+      </div>
+      <div style="margin-left: 15px; margin-right: 15px; margin-bottom: 30px">
         <span style="font-size: 20px"><%= "#{quest.question}" %></span>
-      </p>
+      </div>
       <% quest.answers.each_with_index do |an, k| %>
-        <div class="checkbox">
-          <label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" value="<%= an.id %>">&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= an.answer %>
-          </label>
+        <div class="checkbox border" style="margin: 15px; padding-top: 5px; padding-left: 15px">
+          <input id="hihi<%= k %>" type="checkbox" value="<%= an.id %>" />
+          <label for="hihi<%= k %>" style="padding-left: 10px; width: 95%;"><%= an.answer %></label>
         </div>
       <% end %>
     </div>
