@@ -26,6 +26,14 @@
     <%= f.time_select :max_time, class: "form-control" %>
   </p>
   <p>
+    <%= f.label :start_date %>
+    <%= f.datetime_field :start_date, class: "form-control"%>
+  </p>
+  <p>
+    <%= f.label :finish_date %>
+    <%= f.datetime_field :finish_date, class: "form-control"%>
+  </p>
+  <p>
     <%= f.label :file_question, "File question" %>
     <%= f.file_field :file_question, accept: "text/plain", class: "form-control"%>
   </p>
