@@ -1,18 +1,61 @@
 <div>
   <% @questions.each_with_index do |quest, i| %>
-    <div>
-      <p>
-        <span style="font-weight: bold; font-size: 25px"><%= "Question #{i + 1}:" %></span>
+    <div class="border border-danger" style="background-color: #FAFAD2; padding: 15px; margin-bottom: 30px">
+      <div style="float: right">
+        <p id="demo"></p>
+      </div>
+      <div style="color: gray; text-align: center; margin-top: 40px;">
+        <h3><%= @ticket.code %></h3>
+      </div>
+      <div style="margin: 15px">
+        <b style="font-size: 25px; color: gray"><%= "Question #{i + 1}:" %></b>
+        <hr>
+      </div>
+      <div style="margin-left: 15px; margin-right: 15px; margin-bottom: 30px">
         <span style="font-size: 20px"><%= "#{quest.question}" %></span>
-      </p>
+      </div>
       <% quest.answers.each_with_index do |an, k| %>
-        <div class="checkbox">
-          <label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" value="<%= an.id %>">&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= an.answer %>
-          </label>
+        <div class="checkbox border" style="margin: 15px; padding-top: 5px; padding-left: 15px">
+          <input id="hihi<%= k %>" type="checkbox" value="<%= an.id %>" />
+          <label for="hihi<%= k %>" style="padding-left: 10px; width: 95%;"><%= an.answer %></label>
         </div>
       <% end %>
+      <div style="float: right;">
+        <a class="btn btn-sm btn-outline-warning">Prev</a>
+        <a class="btn btn-sm btn-outline-primary">Next</a>
+      </div>
     </div>
   <% end %>
 </div>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("01 01 2021 00:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  hours = hours < 10 ? "0" + hours : hours
+  minutes = minutes < 10 ? "0" + minutes : minutes
+  seconds = seconds < 10 ? "0" + seconds : seconds
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = "Time: " + hours + ":" + minutes + ":" + seconds;
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "Time: EXPIRED";
+  }
+}, 1000);
+</script>
