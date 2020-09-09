@@ -6,7 +6,7 @@ class Creator::QuestionsController < ApplicationController
     @questions = Question.where(ticket_id: @ticket.id)
   end
 
-  def importfile # custom action
+  def importfile
     begin
       file_path = question_file_param[:file_question].path
       questions = file_path != nil ? get_questions_from_file_text(file_path) : nil
