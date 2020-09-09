@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_035254) do
+ActiveRecord::Schema.define(version: 2020_09_07_030111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_035254) do
     t.bigint "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "delete_at"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_035254) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "delete_at"
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
@@ -42,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_035254) do
     t.bigint "ticket_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "delete_at"
     t.index ["ticket_id"], name: "index_histories_on_ticket_id"
     t.index ["user_id"], name: "index_histories_on_user_id"
   end
@@ -51,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_035254) do
     t.bigint "ticket_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "delete_at"
     t.index ["ticket_id"], name: "index_questions_on_ticket_id"
   end
 
@@ -75,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_035254) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "delete_at"
     t.index ["category_id"], name: "index_tickets_on_category_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
@@ -96,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_035254) do
     t.string "avatar"
     t.string "role"
     t.integer "user_id"
+    t.datetime "delete_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
