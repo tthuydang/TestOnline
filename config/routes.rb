@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     get "intro" => "/guest/tickets#intro"
     get "oncheckboxchange" => "/guest/exam#oncheckboxchange"
+    get "finish" => "/guest/exam#finish"
   end
   scope module: "creator" do
     resources :tickets
