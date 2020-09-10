@@ -39,7 +39,6 @@ class Creator::TicketsController < ApplicationController
     begin
       @ticket = Ticket.find(params[:id])
       if @ticket.update(ticket_params)
-
         if file_param[:file_question] # nếu có import file txt thì update lại danh sách câu hỏi
           questions = get_questions_from_file_text(file_param[:file_question].path)
 
@@ -96,7 +95,7 @@ class Creator::TicketsController < ApplicationController
 
   # lấy danh sách question & answer
   def get_questions_from_file_text(file_path)
-    file = File.new(file_path, 'r')
+    file = File.new(file_path, "r")
     questions = []
     is_question = true
     i = 0
@@ -105,7 +104,7 @@ class Creator::TicketsController < ApplicationController
         quest = line.match(/[Q]\s\d+[\.\:\/\)]/)    # Q 94.:/)
         ans = line.match(/^\w[\.\:\/\)]/)  # a.:/) hoặc A.:/) hoặc 1.:/)
 
-        if quest != nil  # question
+        if quest != nil # question
           curr_question = Question.new
           curr_question.question = line[(quest.to_s.length)..(-1)].strip
           curr_question.dsAnswers = []
@@ -113,7 +112,7 @@ class Creator::TicketsController < ApplicationController
           questions << curr_question
           i += 1
           is_question = true
-        elsif ans != nil  # answer
+        elsif ans != nil # answer
           s_correct = line.match(/!!!T$/)    # !!!T
           ans_content = s_correct == nil ? line[(ans.to_s.length)..(-1)].strip : line[(ans.to_s.length)..(-1)].delete("!!!T").strip
 
@@ -123,10 +122,10 @@ class Creator::TicketsController < ApplicationController
           questions[i - 1].dsAnswers << curr_answer
 
           is_question = false
-        else  # dòng xuống hàng của question hoặc answer
-          if is_question  # nối vào question
+        else # dòng xuống hàng của question hoặc answer
+          if is_question # nối vào question
             questions[i - 1].question += " #{line.strip}"
-          else  # nối vào answer
+          else # nối vào answer
             # nếu xuống hàng có !!!T
             s_correct = line.match(/!!!T$/)    # !!!T
             ans_content = s_correct == nil ? line.strip : line.delete("!!!T").strip

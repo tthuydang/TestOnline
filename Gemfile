@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.6"
 
-gem 'pagy' # phan trang
+gem "pagy" # phan trang
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
 # Use postgresql as the database for Active Record
@@ -24,10 +24,10 @@ gem "jbuilder", "~> 2.7"
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem "bcrypt", "~> 3.1.7"
-
+gem "stripe"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem "dotenv-rails", groups: [:development, :test]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 gem "carrierwave"
@@ -53,7 +53,10 @@ group :test do
   gem "selenium-webdriver"
   # Easy installation and use of web drivers to run system tests with browsers
   gem "webdrivers"
+  gem "colored", "~> 1.2"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "pry"

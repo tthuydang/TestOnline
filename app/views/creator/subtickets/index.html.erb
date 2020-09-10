@@ -1,0 +1,15 @@
+<h2 style="color: gray">Your Subtickets:</h2>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Ticket</th>
+        <th scope="col" style="text-align: center">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%= render partial: "/creator/subtickets/shared/subtickets", collection: @subtickets, as: :subticket %>
+    </tbody>
+  </table>
+</div>

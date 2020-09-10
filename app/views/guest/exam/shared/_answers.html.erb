@@ -1,0 +1,11 @@
+<div class="checkbox border" >
+  <label class="answer-select">
+  <%= check_box_tag 'goi ajax ne', an.id, nil,
+    data: {
+      remote: true,
+      url: url_for(action: :oncheckboxchange, answer_id: an.id),
+      method: "GET"
+    } %>
+  <span>&nbsp;&nbsp;<%= an.answer %></span>
+  </label>
+</div>

@@ -1,6 +1,5 @@
 class Guest::TicketsController < ApplicationController
   before_action :authenticate_user!
-  before_action :map_giao_dien, only: [:exam]
   include Pagy::Backend
 
   def index
@@ -14,14 +13,8 @@ class Guest::TicketsController < ApplicationController
     end
   end
 
-  def exam
+  def intro
     @ticket = Ticket.where(code: params[:code], delete_at: nil).first
-    @questions = Question.where(ticket_id: @ticket.id, delete_at: nil)
-  end
-
-  private
-
-  def map_giao_dien
-    @exam = true
+    redirect_to root_path if @ticket == nil
   end
 end

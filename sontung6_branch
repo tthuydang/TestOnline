@@ -1,0 +1,66 @@
+[33mcommit b9188188928400eb6af1feb3332ece8e9f3d5167[m[33m ([m[1;36mHEAD -> [m[1;32msontung6_branch[m[33m, [m[1;31morigin/sontung6_branch[m[33m, [m[1;31morigin/sontung5_branch[m[33m, [m[1;32msontung5_branch[m[33m)[m
+Merge: 9f6507f 443b307
+Author: tung <nguyensontung18183>
+Date:   Mon Aug 24 10:16:39 2020 +0700
+
+    update caterogy
+
+[33mcommit 443b3077901fae27b44122020d3259885e409fe9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 4305d8d e7bdae0
+Author: Đặng Quang Nhật Huy <67262392+tthuydang@users.noreply.github.com>
+Date:   Sun Aug 23 20:02:47 2020 +0700
+
+    Merge pull request #18 from tthuydang/nhathuy3_branch
+    
+    home page
+
+[33mcommit e7bdae0753cc7d5b32bd46c0f5444be43510ad2f[m[33m ([m[1;31morigin/nhathuy3_branch[m[33m)[m
+Author: tthuydang <tt.huy.dang@tomosia.com>
+Date:   Sun Aug 23 20:02:11 2020 +0700
+
+    home page
+
+[33mcommit 4305d8dfe97d243d4926e8085b68095f51198b66[m
+Merge: ff876b0 35a9bf0
+Author: Đặng Quang Nhật Huy <67262392+tthuydang@users.noreply.github.com>
+Date:   Sat Aug 22 22:32:38 2020 +0700
+
+    Merge pull request #17 from tthuydang/nhathuy3_branch
+    
+    Nhathuy3 branch
+
+[33mcommit 35a9bf06718e662617c53cff7b80881925009a2a[m
+Author: tthuydang <tt.huy.dang@tomosia.com>
+Date:   Sat Aug 22 22:31:19 2020 +0700
+
+    pagination with "pagy" gem
+
+[33mcommit 99d0d504d11c240387b40bb37906b1dea1d2c40c[m
+Author: tthuydang <tt.huy.dang@tomosia.com>
+Date:   Sat Aug 22 22:05:32 2020 +0700
+
+    validates & prettier UI
+
+[33mcommit ff876b0d3751cdb16d1dd70e68c0d28eb339ba8e[m
+Merge: 5f8430f 5ecb2dc
+Author: Đặng Quang Nhật Huy <67262392+tthuydang@users.noreply.github.com>
+Date:   Sat Aug 22 12:57:59 2020 +0700
+
+    Merge pull request #16 from tthuydang/nhathuy3_branch
+    
+    prettier UI
+
+[33mcommit 5ecb2dcd2c4017857fa66805c6bd766b281fb606[m
+Author: tthuydang <tt.huy.dang@tomosia.com>
+Date:   Sat Aug 22 12:56:40 2020 +0700
+
+    prettier UI
+
+[33mcommit 5f8430f590e286089eb6fe9dfe83d2a19787b50b[m
+Merge: 729dc7c de59019
+Author: Đặng Quang Nhật Huy <67262392+tthuydang@users.noreply.github.com>
+Date:   Fri Aug 21 22:22:08 2020 +0700
+
+    Merge pull request #15 from tthuydang/nhathuy3_branch
+    
+    Nhathuy3 branch

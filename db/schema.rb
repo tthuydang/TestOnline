@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_023223) do
+ActiveRecord::Schema.define(version: 2020_09_10_022557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 2020_09_09_023223) do
     t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
+  create_table "history_details", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.bigint "answer_id", null: false
+    t.bigint "history_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_id"], name: "index_history_details_on_answer_id"
+    t.index ["history_id"], name: "index_history_details_on_history_id"
+    t.index ["question_id"], name: "index_history_details_on_question_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text "question"
     t.bigint "ticket_id", null: false
@@ -56,6 +67,17 @@ ActiveRecord::Schema.define(version: 2020_09_09_023223) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "delete_at"
     t.index ["ticket_id"], name: "index_questions_on_ticket_id"
+  end
+
+  create_table "subtickets", force: :cascade do |t|
+    t.string "code"
+    t.text "content"
+    t.bigint "ticket_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "result_ques"
+    t.boolean "result_ans"
+    t.index ["ticket_id"], name: "index_subtickets_on_ticket_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -89,6 +111,10 @@ ActiveRecord::Schema.define(version: 2020_09_09_023223) do
     t.string "role"
     t.integer "user_id"
     t.datetime "delete_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -97,7 +123,11 @@ ActiveRecord::Schema.define(version: 2020_09_09_023223) do
   add_foreign_key "categories", "users"
   add_foreign_key "histories", "tickets"
   add_foreign_key "histories", "users"
+  add_foreign_key "history_details", "answers"
+  add_foreign_key "history_details", "histories"
+  add_foreign_key "history_details", "questions"
   add_foreign_key "questions", "tickets"
+  add_foreign_key "subtickets", "tickets"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "users"
 end
