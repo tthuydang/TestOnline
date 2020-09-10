@@ -44,6 +44,7 @@
       <div class="pagination-ticket">
         <a id="prev" onclick="plusSlides(-1)">Prev</a>
         <a id="next" onclick="plusSlides(1)">Next</a>
+        <a id="finish" onclick="">Finish</a>
       </div>
     </div>
   </div>
@@ -76,7 +77,7 @@
   }
   
   .mySlides {display: none}
-  #next, #prev{
+  #next, #prev, #finish{
     text-align: center;
     border: .5px solid Orange;
     border-radius: 4px;
@@ -86,7 +87,7 @@
     font-weight: 500;
     margin-bottom: 20px;
   }
-  #next:hover, #prev:hover{
+  #next:hover, #prev:hover, #finish:hover{
     background: #ffe5ae;
   }
   .fade {
@@ -166,7 +167,7 @@
       if (seconds < 10){seconds = "0" + seconds;}
       width -= 100 / (60 * width_sec);
       progressbar.style.width = width + "%";
-     if (hours == 0 && minutes < 10 && minutes > 5){
+      if (hours == 0 && minutes < 10 && minutes > 5){
         progressbar.style.background = "#FF6600";
       }else{
         if (hours == 0 && minutes < 5 && minutes > 0){progressbar.style.background = "#FF0000";}
@@ -189,12 +190,13 @@
        var slides = document.getElementsByClassName("mySlides");
   
        if (n >= slides.length) {
-         document.getElementById('next').style.display = "none";
-         // document.getElementById('prev').style.display = "block";
+        document.getElementById('next').style.display = "none";
+        document.getElementById('prev').style.display = "block";
+        document.getElementById('finish').style.display = "block";
        }else{
          if (n == 1) {
-           document.getElementById('prev').style.display = "none";
-           // document.getElementById('next').style.display = "block";
+          document.getElementById('prev').style.display = "none";
+          document.getElementById('finish').style.display = "none";
          }else{
            document.getElementById('prev').style.display = "block";
            document.getElementById('next').style.display = "block";
