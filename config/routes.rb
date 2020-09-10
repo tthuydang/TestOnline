@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   scope module: "guest" do
     root "tickets#index"
     resources :histories
+    resources :exam
 
-    get "exam" => "/guest/tickets#exam"
+    get "intro" => "/guest/tickets#intro"
+    get "oncheckboxchange" => "/guest/exam#oncheckboxchange"
   end
   scope module: "creator" do
     resources :tickets

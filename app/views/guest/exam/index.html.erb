@@ -2,7 +2,7 @@
   <div class="content">
     <div id="ticket-group">
       <div id="ticket-code">
-        <h3><%= Ticket.find(@questions[0][:ticket_id]).code if Ticket.find(@questions[0][:ticket_id]) != nil %></h3>
+        <h3><%= @ticket.code %></h3>
       </div>
       <div class="infor-ticket-example-ques-ans">
         <div class="count-question">
@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="time-ticket">
-          <input type="text" id="time-exam" value="<%=Ticket.find(@questions[0][:ticket_id]).max_time.to_s.split[1].slice(0..1).to_i * 60 + Ticket.find(@questions[0][:ticket_id]).max_time.to_s.split[1].slice(3..4).to_i%>"hidden >
+          <input type="text" id="time-exam" value="<%= @ticket.max_time.to_s.split[1].slice(0..1).to_i * 60 + @ticket.max_time.to_s.split[1].slice(3..4).to_i%>"hidden >
           <b></b><span id="count">
           </span>
         </div>
@@ -31,10 +31,17 @@
               </div>
             </div>
             <div class="ticket-answer">
-              <% quest.answers.each_with_index do |an, k| %>
+              <% quest.answers.each do |an| %>
                 <div class="checkbox border" >
-                  <input id="hihi<%= k %>" type="checkbox" value="<%= an.id %>" />
-                  <label id="answers-text" for="hihi<%= k %>"><%= an.answer %></label>
+                  <label class="answer-select">
+                    <%= check_box_tag 'goi ajax ne', an.id, nil,
+                        data: {
+                          remote: true,
+                          url: url_for(action: :oncheckboxchange, answer_id: an.id),
+                          method: "GET"
+                        } %>
+                    <span>&nbsp;&nbsp;<%= an.answer %></span>
+                  </label>
                 </div>
               <% end %>
             </div>
@@ -45,10 +52,17 @@
         <a id="prev" onclick="plusSlides(-1)">Prev</a>
         <a id="next" onclick="plusSlides(1)">Next</a>
       </div>
+      <div style="float: right">
+        <a href="#" class="btn btn-sm btn-outline-secondary">Submit</a>
+      </div>
     </div>
   </div>
 </div>
 <style>
+  .answer-select {
+    height: 100%;
+    width: 100%
+  }
   .infor-ticket-example-ques-ans{
     border: .5px solid Orange;
     display: flex;
@@ -151,59 +165,64 @@
   var width = 100;
   var progressbar = document.getElementById('time-bar-ticket');
   var width_sec = document.getElementById('time-exam').value;
-  var interval = setInterval(function(){
+  var interval = setInterval(function() {
     var now = new Date()
     var countdown = date - now;
-    var hours = Math.floor((countdown % (1000 *60 * 60 * 24))/(1000 * 60 * 60)) ;
-    var minutes = Math.floor((countdown % (1000 * 60 * 60))/(1000 * 60));
-    var seconds = Math.floor((countdown % (1000 * 60))/1000);
+    var hours = Math.floor((countdown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((countdown % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((countdown % (1000 * 60)) / 1000);
     // count--;
-    if (countdown < 0){
+    if (countdown < 0) {
       clearInterval(interval);
-    }else{
-      if (hours < 10){hours = '0' + hours;}
-      if (minutes < 10){minutes = "0" + minutes;}
-      if (seconds < 10){seconds = "0" + seconds;}
+    } else {
+      if (hours < 10) { hours = '0' + hours; }
+      if (minutes < 10) { minutes = "0" + minutes; }
+      if (seconds < 10) { seconds = "0" + seconds; }
       width -= 100 / (60 * width_sec);
       progressbar.style.width = width + "%";
-     if (hours == 0 && minutes < 10 && minutes > 5){
+      if (hours == 0 && minutes < 10 && minutes > 5) {
         progressbar.style.background = "#FF6600";
-      }else{
-        if (hours == 0 && minutes < 5 && minutes > 0){progressbar.style.background = "#FF0000";}
-        else{
-          if(hours == 0 && minutes == 0 && seconds == 0){progressbar.style.width = "0%";}
+      } else {
+        if (hours == 0 && minutes < 5 && minutes > 0) {
+          progressbar.style.background = "#FF0000";
+        } else {
+          if (hours == 0 && minutes == 0 && seconds == 0) {
+            progressbar.style.width = "0%";
+          }
         }
       }
       document.getElementById('count').innerHTML = hours + ":" + minutes + ":" + seconds;
     }
   }, 1000);
-  
+
   //Slide-show-ticket
-    var slideIndex = 1;
-     showSlides(slideIndex);
-     function plusSlides(n) {
-       showSlides(slideIndex += n);
-     }
-     function showSlides(n) {
-       var i;
-       var slides = document.getElementsByClassName("mySlides");
-  
-       if (n >= slides.length) {
-         document.getElementById('next').style.display = "none";
-         // document.getElementById('prev').style.display = "block";
-       }else{
-         if (n == 1) {
-           document.getElementById('prev').style.display = "none";
-           // document.getElementById('next').style.display = "block";
-         }else{
-           document.getElementById('prev').style.display = "block";
-           document.getElementById('next').style.display = "block";
-         }
-       }
-       for (i = 0; i < slides.length; i++) {
-           slides[i].style.display = "none";
-       }
-       slides[slideIndex-1].style.display = "block";
-     }
-      //progressBar-time-countdown
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+
+    if (n >= slides.length) {
+      document.getElementById('next').style.display = "none";
+      // document.getElementById('prev').style.display = "block";
+    } else {
+      if (n == 1) {
+        document.getElementById('prev').style.display = "none";
+        // document.getElementById('next').style.display = "block";
+      } else {
+        document.getElementById('prev').style.display = "block";
+        document.getElementById('next').style.display = "block";
+      }
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+  }
+  //progressBar-time-countdown
 </script>
