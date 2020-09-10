@@ -1,0 +1,14 @@
+<div class="mySlides fade group-ans-ques">
+  <div class="ticket-question">
+    <div id="questions-group">
+      <b id="questions"><%= "Question #{@ques_index += 1}:" %></b>
+      <hr>
+    </div>
+    <div id="questions-group-ques">
+      <span id="questions-text"><%= "#{quest.question}" %></span>
+    </div>
+  </div>
+  <div class="ticket-answer">
+    <%= render partial: "/guest/exam/shared/answers", collection: quest.answers, as: :an %>
+  </div>
+</div>

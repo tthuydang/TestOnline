@@ -20,33 +20,8 @@
         </div>
       </div>
       <div class="ans-ques-group">
-        <% @questions.each_with_index do |quest, i| %>
-          <div class="mySlides fade group-ans-ques">
-            <div class="ticket-question">
-              <div id="questions-group">
-                <b id="questions"><%= "Question #{i + 1}:" %></b><hr>
-              </div>
-              <div id="questions-group-ques">
-                <span id="questions-text"><%= "#{quest.question}" %></span>
-              </div>
-            </div>
-            <div class="ticket-answer">
-              <% quest.answers.each do |an| %>
-                <div class="checkbox border" >
-                  <label class="answer-select">
-                    <%= check_box_tag 'goi ajax ne', an.id, nil,
-                        data: {
-                          remote: true,
-                          url: url_for(action: :oncheckboxchange, answer_id: an.id),
-                          method: "GET"
-                        } %>
-                    <span>&nbsp;&nbsp;<%= an.answer %></span>
-                  </label>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+        <% @ques_index = 0 %>
+        <%= render partial: "/guest/exam/shared/questions", collection: @questions, as: :quest %>
       </div>
       <div class="pagination-ticket">
         <a id="prev" onclick="plusSlides(-1)">Prev</a>
