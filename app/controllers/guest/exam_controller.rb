@@ -40,11 +40,10 @@ class Guest::ExamController < ApplicationController
   def finish # update lại history và history_detail
     history = History.find(session[:curr_history_id])
     history.total_correct = total_correct(history.ticket_id, history.id)
-    # history.completed_time = completed_time(session[:start_time])
-
-    # history.is_passed = ?
+    history.is_passed = is_passed(history.total_question, history.total_correct)
+    history.completed_time = completed_time(session[:start_time])
     history.updated_at = Time.now
-    # history.save
+    history.save
 
     session.delete(:curr_history_id)
     session.delete(:start_time)
@@ -87,5 +86,9 @@ class Guest::ExamController < ApplicationController
     now = Time.parse(Time.now.strftime('%H:%M:%S'))
     start = Time.parse(start_time.to_s)
     Time.at(now - start).utc.strftime("%H:%M:%S")
+  end
+
+  def is_passed(total_question, total_correct)
+    return (total_correct.to_f / total_question) > 0.5 ? true : false
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_022557) do
+ActiveRecord::Schema.define(version: 2020_09_13_025415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_022557) do
     t.integer "total_question"
     t.integer "total_correct"
     t.boolean "is_passed"
-    t.datetime "completed_time"
+    t.string "completed_time"
     t.bigint "user_id", null: false
     t.bigint "ticket_id", null: false
     t.datetime "created_at", precision: 6, null: false
