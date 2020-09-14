@@ -50,10 +50,10 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_mailer.delivery_method = :letter_opener_web
+  #config.action_mailer.delivery_method = :letter_opener_web
 
   # If not everyone on the team is using vagrant
-  config.action_mailer.delivery_method = ENV["USER"] == "vagrant" ? :letter_opener_web : :letter_opener
+  #config.action_mailer.delivery_method = ENV["USER"] == "vagrant" ? :letter_opener_web : :letter_opener
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
@@ -63,17 +63,30 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
+  # host = "localhost:3000"
+  # config.action_mailer.default_url_options = { :host => "localhost:3000" }
   # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.perform_deliveries = true
   # config.action_mailer.smtp_settings = {
   #   :address => "smtp.gmail.com",
   #   :port => 587,
-  #   :domain => "mydomain.com",
   #   :user_name => "hotro.testonline@gmail.com",
-  #   :password => "Hotro.testonline",
-  #   :authentication => :plain,
+  #   :password => "hotro.testonline123",
+  #   :authentication => "plain",
   #   :enable_starttls_auto => true,
   # }
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :user_name => "hotro.testonline@gmail.com",
+    :password => "hotro.testonline123",
+    :authentication => "plain",
+    :enable_starttls_auto => true,
+  }
 end

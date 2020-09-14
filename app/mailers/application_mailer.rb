@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "hotro.testonline@gmail.com"
   layout "mailer"
 
   def feedback_mailer(user)
