@@ -7,7 +7,7 @@
     <p>
     <%= f.label :avatar %><br />
     <%= avatar_for(@user) %>
-    <%= f.file_field :avatar %>
+    <%= f.file_field :avatar, accept: "image/png,image/jpg,image/jpeg" %>
     </p>
   </div> 
 
