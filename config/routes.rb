@@ -16,8 +16,10 @@ Rails.application.routes.draw do
     resources :categories
     resources :subtickets
     resources :questions
+    resources :histories
     post "importfile" => "/creator/questions#importfile"
     get "download_subticket" => "/creator/subtickets#download_subticket"
+    get "creator/history" => "/creator/histories#history"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
