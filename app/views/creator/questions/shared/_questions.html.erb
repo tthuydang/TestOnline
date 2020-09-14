@@ -11,6 +11,6 @@
     </div>
   </td>
   <td style="text-align: center">
-    <%= link_to("Delete", question_path(qs), method: :delete, data: { confirm: 'Are you certain?' }, class:"btn btn-warning") %>
+    <%= link_to("<i class='fas fa-trash-alt'></i>".html_safe, question_path(qs), method: :delete, data: { confirm: 'Are you certain?' }, class:"btn btn-warning") %>
   </td>
 </tr>

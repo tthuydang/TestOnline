@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col" style="text-align: center">Completed time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @his_index = 0 %>
+    <% @histories.each do |his| %>
+      <tr>
+        <td><%= "#{his.user.firstname} #{his.user.lastname}" %></td>
+        <td><%= his.is_passed ? "Passed" : "Failed" %></td>
+        <td><%= his.completed_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -3,7 +3,7 @@
   <td><%= subticket.ticket_id %></td>
  
   <td style="text-align: center">
-    <%= link_to("Delete", subticket_path(subticket), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning") %>
-   <%= link_to("Download", download_subticket_path(subticket_id: subticket.id), class: "btn btn-warning") %>
+    <%= link_to("<i class='fas fa-trash-alt'></i>".html_safe, subticket_path(subticket), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-warning") %>
+    <%= link_to("<i class='fas fa-download'></i>".html_safe, download_subticket_path(subticket_id: subticket.id), class: "btn btn-sm btn-primary") %>
   </td>
 </tr>
