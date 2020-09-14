@@ -7,11 +7,9 @@
   </thead>
   <tbody>
     <% @his_index = 0 %>
-    <% @histories.each do |his| %>
+    <% (1..2).each do |his| %>
       <tr>
-        <td><%= "#{his.user.firstname} #{his.user.lastname}" %></td>
-        <td><%= his.is_passed ? "Passed" : "Failed" %></td>
-        <td><%= his.completed_time %></td>
+        <td>Faild</td>
       </tr>
     <% end %>
   </tbody>

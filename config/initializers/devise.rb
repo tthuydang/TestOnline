@@ -24,10 +24,9 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = "hotro.testonline@gmail.com"
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = "Devise::Mailer"
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
@@ -240,6 +239,8 @@ Devise.setup do |config|
   # Require the `devise-encryptable` gem when using anything other than bcrypt
   # config.encryptor = :sha512
 
+  config.mailer_sender = "hotro.testonline@gmail.com"
+
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
@@ -289,14 +290,16 @@ Devise.setup do |config|
   #
   #     mount MyEngine, at: '/my_engine'
   #
-  # The router that invoked `devise_for`, in the example above, would be:
-  # config.router_name = :my_engine
-  #
-  # When using OmniAuth, Devise cannot automatically set OmniAuth path,
-  # so you need to do it manually. For the users scope, it would be:
-  # config.omniauth_path_prefix = '/my_engine/users/auth'
+  # Configure the default scope given to Warden. By default it's the first
+  # devise role declared in your routes (usually :user).
+  # config.default_scope = :user
 
-  # ==> Turbolinks configuration
+  # Set this configuration to false if you want /users/sign_out to sign out
+  # only the current scope. By default, Devise signs out all scopes.
+  # config.sign_out_all_scopes = true
+
+  # ==> Navigation configuration
+  # Lists the formats that should b
   # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:
   #
   # ActiveSupport.on_load(:devise_failure_app) do
@@ -309,3 +312,13 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 end
+# Configure the default scope given to Warden. By default it's the first
+# devise role declared in your routes (usually :user).
+# config.default_scope = :user
+
+# Set this configuration to false if you want /users/sign_out to sign out
+# only the current scope. By default, Devise signs out all scopes.
+# config.sign_out_all_scopes = true
+
+# ==> Navigation configuration
+# Lists the formats that should b
