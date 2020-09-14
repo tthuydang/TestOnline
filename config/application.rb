@@ -14,5 +14,16 @@ module TestOnline
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    # ActiveRecord::Base.smtp_settings = {
+
+    #   :address => "smtp.example.com",
+    #   :domain => "mail.google.com",
+    #   :port => "587",
+    #   :username => "nguyensontung183@gmail.com",
+    #   :password => "01214502242",
+    #   :authentication => "login",
+    #   :enable_starttls_auto => true,
+
+    # }
   end
 end

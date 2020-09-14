@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="time-ticket">
-          <input type="text" id="time-exam" value="<%=Ticket.find(@questions[0][:ticket_id]).max_time.to_s.split[1].slice(0..1).to_i * 60 + Ticket.find(@questions[0][:ticket_id]).max_time.to_s.split[1].slice(3..4).to_i%>"hidden >
+          <input type="text" id="time-exam" value="<%=@ticket.max_time.to_s.split[1].slice(0..1).to_i * 60 + @ticket.max_time.to_s.split[1].slice(3..4).to_i%>"hidden >
           <b></b><span id="count">
           </span>
         </div>
