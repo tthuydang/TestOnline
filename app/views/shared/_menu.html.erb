@@ -1,5 +1,5 @@
 <div class="list-group">
-  <a href="" style="font-family: 'Roboto Slab', serif;" class="list-group-item list-group-item-action list-group-item-primary"><b>Categories</b></a>
+  <a style="font-family: 'Roboto Slab', serif;" class="list-group-item list-group-item-action list-group-item-primary"><b>Categories</b></a>
   <% @categories.each do |item| %>
     <%= link_to("#{item.title}", root_path(:subject => item.title), style: "font-family: 'Roboto Slab', serif;", class: "list-group-item list-group-item-action list-group-item-info") %>
   <% end %>
