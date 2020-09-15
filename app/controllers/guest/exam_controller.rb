@@ -77,7 +77,7 @@ class Guest::ExamController < ApplicationController
     questions.each do |quest|
       correct_answers = quest.answers.where(is_correct: true).map(&:id)
       selected_answers = HistoryDetail.where(question_id: quest.id, history_id: history_id).map(&:answer_id)
-      total += 1 if selected_answers & correct_answers == selected_answers # comparing two arrays ignoring element order
+      total += 1 if correct_answers.difference(selected_answers).empty? && selected_answers.difference(correct_answers).empty?
     end
     total
   end
