@@ -6,6 +6,11 @@
       <%= f.text_field :title, class:"form-control" %>
     </p>
     <p>
+      <%= f.label :image %> <br>
+      <%= image_tag @category.image.url(:thumb) if @category.image? %>
+      <%= f.file_field :image, accept: "image/png,image/jpg,image/jpeg" %>
+    </p>
+    <p>
       <%= f.submit class:"btn btn-success" %>
     </p>
   <% end %>

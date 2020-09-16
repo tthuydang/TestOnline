@@ -15,7 +15,7 @@
   <p>
     <%= image_tag @ticket.image.url(:thumb) if @ticket.image? %>
     <%= f.label :image %> <br>
-    <%= f.file_field :image, accept: "image/png,image/jpg,image/jpeg", class: "form-control"%>
+    <%= f.file_field :image, accept: "image/png,image/jpg,image/jpeg", class: "form-control" %>
   </p>
   <p>
     <%= f.label :description %>

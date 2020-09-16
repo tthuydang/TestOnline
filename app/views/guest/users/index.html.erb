@@ -1,7 +1,7 @@
 <!--header -->
 <div>
   <%= render "shared/navigation" %>
-  <%= image_tag("cambridge_banner.png") %>
+  <%= image_tag("cambridge_banner.jpg") %>
   <p class="notice"><% notice %></p>
   <p class="alert"><% alert %> </p>
 </div>
@@ -43,7 +43,7 @@
             <% end %>
           </div>
           <div class="user-btn-edit-show">
-            <%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary" %>
+            <%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-info" %>
           </div>
         </div>
       </>
@@ -59,6 +59,10 @@
   </div>
   <!--CSS-->
   <style>
+    .index-show {
+      background-color: #FFF892;
+      padding: 25px;
+    }
     .user-info-show{
       display: flex;
       flex-direction: row;

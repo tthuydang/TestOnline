@@ -47,6 +47,6 @@ class Creator::CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:title)
+    params.require(:category).permit(:title, :image)
   end
 end
