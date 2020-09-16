@@ -11,47 +11,43 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-
-<div class="row">
-  <div class="container">
-    <div style="float: left">
-      <h2 style="color: gray; font-family: 'Roboto Slab', serif;"><%= "#{@title}:" %></h2> <br>
-    </div>
-    <div style="float: right">
-      <%= pagy_bootstrap_nav(@pagy).html_safe %>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <%= render partial: "/guest/tickets/shared/tickets", collection: @tickets, as: :ticket %>
-</div>
-
-<div class="row">
-  <div class="container">
-    <div style="float: right">
-      <%= pagy_bootstrap_nav(@pagy).html_safe %>
-    </div>
-  </div>
-</div>
-
-<style>
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
-</style>
-
+      <div class="row">
+        <div class="container">
+          <div style="float: left">
+            <h2 style="color: gray; font-family: 'Roboto Slab', serif;"><%= "#{@title}:" %></h2>
+            <br>
+          </div>
+          <div style="float: right">
+            <%= pagy_bootstrap_nav(@pagy).html_safe %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <%= render partial: "/guest/tickets/shared/tickets", collection: @tickets, as: :ticket %>
+      </div>
+      <div class="row">
+        <div class="container">
+          <div style="float: right">
+            <%= pagy_bootstrap_nav(@pagy).html_safe %>
+          </div>
+        </div>
+      </div>
+      <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
     </div>
     <div class="col-md-2"></div>
   </div>
