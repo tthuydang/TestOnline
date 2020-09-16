@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_if_creator
-    redirect_to root_path if current_user != nil && current_user.role != "CREATOR" 
+    redirect_to root_path if current_user != nil && current_user.role_user != "CREATOR" 
   end
 end
