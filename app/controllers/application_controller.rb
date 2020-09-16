@@ -4,14 +4,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def shared_pages
-    @categories = Category.all
-  end
-
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :avatar, :email, :password])
     devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :avatar, :role, :email, :password, :current_password])
+  end
+
+  private
+
+  def shared_pages
+    @categories = Category.all
+  end
+
+  def check_if_creator
+    redirect_to root_path if current_user != nil && current_user.role_user != "CREATOR" 
   end
 end
