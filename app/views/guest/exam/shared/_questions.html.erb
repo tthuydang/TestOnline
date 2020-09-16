@@ -9,6 +9,10 @@
     </div>
   </div>
   <div class="ticket-answer">
-    <%= render partial: "/guest/exam/shared/answers", collection: quest.answers, as: :an %>
+    <%= if Answer.where(question_id: quest.id, is_correct: true).size > 1
+      render partial: "/guest/exam/shared/answers_checkbox", collection: quest.answers.shuffle, as: :an
+    else
+      render partial: "/guest/exam/shared/answers_radio", collection: quest.answers.shuffle, as: :an
+    end %>
   </div>
 </div>

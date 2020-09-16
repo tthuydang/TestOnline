@@ -14,22 +14,22 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% if current_user.role_user == "CREATOR" %>
-              <%= link_to("Your Tickets", tickets_path, class: "dropdown-item") %>
-              <%= link_to("Your Categories", categories_path, class: "dropdown-item") %>
+              <%= link_to("<i class='fas fa-clipboard-list'></i> Your Tickets".html_safe, tickets_path, class: "dropdown-item") %>
+              <%= link_to("<i class='fab fa-cuttlefish'></i> Your Categories".html_safe, categories_path, class: "dropdown-item") %>
               <div class="dropdown-divider"></div>
             <% end %>
-            <%= link_to "Profile", users_path(:id => current_user), class: "dropdown-item" %>
-            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "<i class='fas fa-user'></i> Profile".html_safe, users_path(:id => current_user), class: "dropdown-item" %>
+            <%= link_to "<i class='fas fa-user-edit'></i> Edit profile".html_safe, edit_user_registration_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "<i class='fas fa-sign-out-alt'></i> Logout".html_safe, destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
         <li class="nav-item active">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "<i class='fas fa-sign-in-alt'></i> Login".html_safe, new_user_session_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "<i class='fas fa-user-plus'></i> Sign up".html_safe, new_user_registration_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>

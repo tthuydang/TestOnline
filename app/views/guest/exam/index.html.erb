@@ -32,7 +32,7 @@
       </div>
       <div class="ans-ques-group">
         <% @ques_index = 0 %>
-        <%= render partial: "/guest/exam/shared/questions", collection: @questions, as: :quest %>
+        <%= render partial: "/guest/exam/shared/questions", collection: @questions.shuffle, as: :quest %>
       </div>
       <div class="pagination-ticket">
         <a id="prev" onclick="plusSlides(-1)">Prev</a>
