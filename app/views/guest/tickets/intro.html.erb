@@ -1,16 +1,37 @@
 <div>
-  <h1 style="color: gray; margin-bottom: 30px">Đề thi: <%= @ticket.code %></h1>
-  <p>
-    <h3 style="color: red"><%= @ticket.title %></h3>
-  </p>
-  <p>
-    <h4 style="color: gray">Subject: <%= @ticket.category.title %></h4>
-  </p>
-  <p>
-    <h4 style="color: gray">Duration: <%= @ticket.max_time.strftime("%H:%M") + "s" %></h4>
-  </p>
-  <p>
-    <h4 style="color: gray">Description: <%= @ticket.description %></h4>
-  </p>
-  <%= link_to("Start", exam_index_path(:code =>@ticket.code), class: "btn btn-info form-control", style: "margin-top: 50px") %>
+  <%= render "shared/navigation" %>
+  <p class="notice"><% notice %></p>
+  <p class="alert"><% alert %> </p>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:0%">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <%= render("shared/alert") %>
+
+      <div style="padding: 70px">
+        <h1 style="color: gray; margin-bottom: 30px">Đề thi: <%= @ticket.code %></h1>
+        <p>
+          <h3 style="color: red"><%= @ticket.title %></h3>
+        </p>
+        <p>
+          <h4 style="color: gray">Subject: <%= @ticket.category.title %></h4>
+        </p>
+        <p>
+          <h4 style="color: gray">Duration: <%= @ticket.max_time.strftime("%H:%M") + "s" %></h4>
+        </p>
+        <p>
+          <h4 style="color: gray">Description: <%= @ticket.description %></h4>
+        </p>
+        <%= link_to("Start", exam_index_path(:code =>@ticket.code), class: "btn btn-info form-control", style: "margin-top: 50px") %>
+      </div>
+
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:5%;">
+  </div>
 </div>

@@ -1,0 +1,5 @@
+<p><b style="color: gray">Question <%= @quest_index += 1 %>: </b><%= Question.find(item[0]).question %></p>
+<div>
+  <% @ans_index = 0 %>
+  <%= render partial: "/creator/subtickets/shared/answers", collection: item[1], as: :an_id %>
+</div>

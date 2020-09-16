@@ -1,3 +1,15 @@
+<div>
+  <%= render "shared/navigation" %>
+  <p class="notice"><% notice %></p>
+  <p class="alert"><% alert %> </p>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:0%">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <%= render("shared/alert") %>
+
 <div class="container">
   <div class="content">
     <div id="ticket-group">
@@ -110,7 +122,7 @@
     font-size: 20px;
   }
   #questions{
-    font-size: 25px;
+    font-size: 20px;
     color: gray;
   }
     #questions-group{
@@ -119,7 +131,8 @@
     #ticket-code {
       text-align: center;
       color: gray;
-      margin-top: 40px;"
+      margin-top: 10px;
+      margin-bottom: 10px
     }
     #ticket-group{
       border: .5px solid Orange;
@@ -200,3 +213,12 @@
   }
   //progressBar-time-countdown
 </script>
+
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:5%;">
+  </div>
+</div>

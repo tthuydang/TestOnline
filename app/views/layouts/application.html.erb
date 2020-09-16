@@ -10,34 +10,6 @@
   </head>
 
   <body class="bg-light">
-
-    <div>
-      <%= render "shared/navigation" %>
-      <%= image_tag("cambridge_banner.png") %>
-      <p class="notice"><% notice %></p>
-      <p class="alert"><% alert %> </p>
-    </div>
-
-    <div class="container">
-      <div class="row" style="padding-top:0%">
-        <div class="col-md-2">
-          <%= render "shared/menu" %>
-        </div>
-
-          <div class="col-md-8">
-            <%= render("shared/alert") %>
-            <%= yield %>
-          </div>
-
-        <div class="col-md-2"></div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row" style="padding-top:5%;">
-        <%= render("shared/footer") %>
-      </div>
-    </div>
-
+    <%= yield %>
   </body>
 </html>

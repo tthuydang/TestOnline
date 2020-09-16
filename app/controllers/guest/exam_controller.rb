@@ -38,17 +38,22 @@ class Guest::ExamController < ApplicationController
   # nếu ko submit thì ko lưu các trường như completed_time
   # => completed_time = nil => rác => xóa(cái này viết ở index của history)
   def finish # update lại history và history_detail
-    history = History.find(session[:curr_history_id])
-    history.total_correct = total_correct(history.ticket_id, history.id)
-    history.is_passed = is_passed(history.total_question, history.total_correct)
-    history.completed_time = completed_time(session[:start_time])
-    history.updated_at = Time.now
-    history.save
+    if session[:curr_history_id] == nil
+      flash[:notice] = "there is nothing to submit."
+      redirect_back(fallback_location: exam_index_path)
+    else
+      history = History.find(session[:curr_history_id])
+      history.total_correct = total_correct(history.ticket_id, history.id)
+      history.is_passed = is_passed(history.total_question, history.total_correct)
+      history.completed_time = completed_time(session[:start_time])
+      history.updated_at = Time.now
+      history.save
 
-    session.delete(:curr_history_id)
-    session.delete(:start_time)
+      session.delete(:curr_history_id)
+      session.delete(:start_time)
 
-    redirect_to histories_path
+      redirect_to histories_path
+    end
   end
 
   private
@@ -77,7 +82,7 @@ class Guest::ExamController < ApplicationController
     questions.each do |quest|
       correct_answers = quest.answers.where(is_correct: true).map(&:id)
       selected_answers = HistoryDetail.where(question_id: quest.id, history_id: history_id).map(&:answer_id)
-      total += 1 if selected_answers & correct_answers == selected_answers # comparing two arrays ignoring element order
+      total += 1 if correct_answers.difference(selected_answers).empty? && selected_answers.difference(correct_answers).empty?
     end
     total
   end

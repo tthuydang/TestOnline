@@ -1,5 +1,8 @@
+require 'json'
+
 class Creator::SubticketsController < ApplicationController
   before_action :authenticate_user!
+  before_action :shared_pages
 
   def index
     @subtickets = []
@@ -11,6 +14,7 @@ class Creator::SubticketsController < ApplicationController
   end
 
   def show
+    @content = JSON.parse(Subticket.find(params[:id]).content)
   end
 
   def new
@@ -20,13 +24,15 @@ class Creator::SubticketsController < ApplicationController
 
   def create
     Ticket.where(:id => subticket_params[:ticket_id], :user_id => current_user.id).first.subtickets.destroy_all
-    code = Ticket.find(subticket_params[:ticket_id]).code
+    ticket = Ticket.find(subticket_params[:ticket_id])
+    code = ticket.code
     for i in 1..amount_param[:amount].to_i
       break if i > amount_param[:amount].to_i
       subticket = Subticket.new(subticket_params)
       subticket.result_ques = subticket_params[:result_ques] == "1" ? true : false
       subticket.result_ans = subticket_params[:result_ans] == "1" ? true : false
-      subticket.code = code + "-#{i.to_s}"
+      subticket.code = "#{code}-#{ticket.subtickets.count}"
+      subticket.content = save_subticket_content(ticket, subticket.result_ques, subticket.result_ans)
       subticket.save
     end
     @subtickets = Subticket.all
@@ -62,6 +68,21 @@ class Creator::SubticketsController < ApplicationController
 
   def amount_param
     params.require(:subticket).permit(:amount)
+  end
+
+  def save_subticket_content(ticket, shuffle_ques, shuffle_ans)
+    content = []
+    ticket.questions.shuffle.each do |quest|
+      data = []
+      data << quest.id
+      answers = shuffle_ans == true ? quest.answers.shuffle : quest.answers
+
+      ans = []
+      answers.each { |an| ans << an.id }
+      data << ans
+      content << data
+    end
+    content.to_s
   end
 
   def write_ques_ans(ques, subticket, result_ques, result_ans)

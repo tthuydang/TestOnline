@@ -12,8 +12,10 @@
     <div class="col-md-8">
       <%= render("shared/alert") %>
 
-<h2 style="color: gray">Update Category:</h2>
-<%= render '/creator/categories/shared/save_category' %>
+<div>
+  <% @quest_index = 0 %>
+  <%= render partial: "/creator/subtickets/shared/questions", collection: @content, as: :item %>
+</div>
 
     </div>
     <div class="col-md-2"></div>

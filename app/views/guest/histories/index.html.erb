@@ -1,22 +1,46 @@
-<% (1..6).each do |i| %>
-  <div style="margin-bottom: 80px; padding: 10px; border-width:2px; border-style:outset;">
-    <h3 style="color: gray">Version <%= i %></h3>
-    <p style="color: gray">65 questions | 2 hours 10 minutes | 72% correct required to pass</p>
-    <div class="container" style="background-color: #ffddee;">
-      <div class="row">
-        <div class="col-md-3">
-          <p><h5 style="color: red">Failed</h5></p>
-        </div>
-        <div class="col-md-3">
-          <p><h6 style="color: black">60% correct</h6></p>
-        </div>
-        <div class="col-md-3">
-          <p><h6>1 hours 42 minutes</h6></p>
-        </div>
-        <div class="col-md-3">
-          <p><h6>10/05/2020</h6></p>
-        </div>
-      </div>
+<div>
+  <%= render "shared/navigation" %>
+  <%= image_tag("cambridge_banner.png") %>
+  <p class="notice"><% notice %></p>
+  <p class="alert"><% alert %> </p>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:0%">
+    <div class="col-md-2">
+      <%= render "shared/menu" %>
     </div>
+    <div class="col-md-8">
+      <%= render("shared/alert") %>
+
+      <% (1..6).each do |i| %>
+        <div style="margin-bottom: 80px; padding: 10px; border-width:2px; border-style:outset;">
+          <h3 style="color: gray">Version <%= i %></h3>
+          <p style="color: gray">65 questions | 2 hours 10 minutes | 72% correct required to pass</p>
+          <div class="container" style="background-color: #ffddee;">
+            <div class="row">
+              <div class="col-md-3">
+                <p><h5 style="color: red">Failed</h5></p>
+              </div>
+              <div class="col-md-3">
+                <p><h6 style="color: black">60% correct</h6></p>
+              </div>
+              <div class="col-md-3">
+                <p><h6>1 hours 42 minutes</h6></p>
+              </div>
+              <div class="col-md-3">
+                <p><h6>10/05/2020</h6></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+    <div class="col-md-2"></div>
   </div>
-<% end %>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:5%;">
+    <%= render("shared/footer") %>
+  </div>
+</div>
