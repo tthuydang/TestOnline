@@ -1,5 +1,4 @@
 class Guest::TicketsController < ApplicationController
-  before_action :authenticate_user!
   before_action :shared_pages
   include Pagy::Backend
 
