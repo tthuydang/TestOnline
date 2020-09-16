@@ -1,4 +1,5 @@
 class Creator::QuestionsController < ApplicationController
+  before_action :shared_pages
 
   def index
     redirect_to tickets_path if params[:ticket_code] == nil

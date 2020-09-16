@@ -1,5 +1,6 @@
 class Creator::HistoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :shared_pages
 
   def history
     ticket = Ticket.find_by(code: params[:code])

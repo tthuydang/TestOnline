@@ -2,6 +2,7 @@ require 'json'
 
 class Creator::SubticketsController < ApplicationController
   before_action :authenticate_user!
+  before_action :shared_pages
 
   def index
     @subtickets = []
