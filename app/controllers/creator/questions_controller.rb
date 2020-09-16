@@ -1,4 +1,5 @@
 class Creator::QuestionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :shared_pages
   before_action :check_if_creator
 
@@ -26,8 +27,12 @@ class Creator::QuestionsController < ApplicationController
   end
 
   def destroy
-    question = Question.find(params[:id])
-    question.destroy
+    begin
+      question = Question.find(params[:id])
+      question.destroy
+    rescue => exception
+      flash[:notice] = "Cannot destroy this question."
+    end
     redirect_back(fallback_location: questions_path) # load lại trang và giữ nguyên parameter trên url
   end
 
