@@ -6,6 +6,17 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Competition
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% Category.all.each do |category| %>
+              <%= link_to("#{category.title}", competition_index_path(:subject => category.title), class: "dropdown-item") %>
+            <% end %>
+          </div>
+        </li>
+        <div style="margin-right: 20px"></div>
         <li class="nav-item active nav-link"><%= link_to(avatar_for(current_user, size: 20)) %>
         </li>
         <li class="nav-item dropdown">

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :histories
     resources :exam
     resources :users
+    resources :competition
 
     get "intro" => "/guest/tickets#intro"
     get "oncheckboxchange" => "/guest/exam#oncheckboxchange"

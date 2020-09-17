@@ -1,0 +1,24 @@
+<div>
+  <%= render "shared/navigation" %>
+  <%= image_tag("cambridge_banner.jpg") %>
+  <p class="notice"><% notice %></p>
+  <p class="alert"><% alert %> </p>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:0%">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <%= render("shared/alert") %>
+
+      <%= "ky thi cua #{params[:subject]}" %>
+
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:5%;">
+    <%= render("shared/footer") %>
+  </div>
+</div>
