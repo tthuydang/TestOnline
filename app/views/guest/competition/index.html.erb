@@ -11,7 +11,8 @@
     <div class="col-md-8">
       <%= render("shared/alert") %>
 
-      <%= "ky thi cua #{params[:subject]}" %>
+      <h2 style="color: gray; margin-bottom: 50px">Competitions:</h2>
+      <%= render partial: "/guest/competition/shared/tickets", collection: @tickets, as: :ticket %>
 
     </div>
     <div class="col-md-2"></div>

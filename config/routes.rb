@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get "intro" => "/guest/tickets#intro"
     get "oncheckboxchange" => "/guest/exam#oncheckboxchange"
     get "finish" => "/guest/exam#finish"
+    get "confirm" => "/guest/competition#confirm"
+    post "confirm_code" => "/guest/competition#confirm_code"
   end
   scope module: "creator" do
     resources :tickets
