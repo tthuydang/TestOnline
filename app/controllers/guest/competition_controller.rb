@@ -14,16 +14,18 @@ class Guest::CompetitionController < ApplicationController
   end
 
   def confirm_code
-    ticket = Ticket.find(params[:ticket_id])
-    now = DateTime.now.strftime("%d/%m/%Y")
-    if ticket.start_date.strftime("%d/%m/%Y") < now || now > ticket.finish_date.strftime("%d/%m/%Y")
-      flash[:notice] = "This ticket is outdated. Please choose another one!"
-      redirect_back(fallback_location: confirm_path)
-    elsif params[:competition_code].to_s != ticket.competition_code
+    ticket = Ticket.find_by(id: params[:ticket_id], competition_code: params[:competition_code])
+    if ticket == nil
       flash[:notice] = "Competition code is invalid. Please check your code and try again!"
       redirect_back(fallback_location: confirm_path)
     else
-      redirect_to exam_index_path(code: ticket.code)
+      now = DateTime.now.strftime("%d/%m/%Y")
+      if ticket.start_date.strftime("%d/%m/%Y") <= now && ticket.finish_date.strftime("%d/%m/%Y") >= now
+        redirect_to intro_path(code: ticket.code)
+      else
+        flash[:notice] = "This ticket is outdated. Please choose another one!"
+        redirect_back(fallback_location: confirm_path)
+      end
     end
   end
 end
