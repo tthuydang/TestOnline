@@ -12,7 +12,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% Category.all.each do |category| %>
-              <%= link_to("#{category.title}", competition_index_path(:subject => category.title), class: "dropdown-item") %>
+              <%= link_to("#{category.title} (#{category.tickets.where.not(start_date: nil, finish_date: nil, competition_code: nil).size})", competition_index_path(:subject => category.title), class: "dropdown-item") %>
             <% end %>
           </div>
         </li>
