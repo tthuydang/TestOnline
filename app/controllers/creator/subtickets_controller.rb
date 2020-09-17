@@ -1,4 +1,4 @@
-require 'json'
+require "json"
 
 class Creator::SubticketsController < ApplicationController
   before_action :authenticate_user!
