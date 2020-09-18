@@ -3,10 +3,10 @@
   <td><%= ticket.title %></td>
   <td><%= ticket.category.title %></td>
   <td style="text-align: center">
-    <%= link_to("<i class='fas fa-plus-square'></i>".html_safe, new_subticket_path(:code => ticket.code), class: "btn btn-sm btn-info") %>
-    <%= link_to("<i class='fas fa-info-circle'></i>".html_safe, questions_path(:ticket_code => ticket.code), class: "btn btn-sm btn-info") %>
-    <%= link_to("<i class='fas fa-pencil-alt'></i>".html_safe, edit_ticket_path(ticket), class: "btn btn-sm btn-primary") %>
-    <%= link_to("<i class='fas fa-history'></i>".html_safe, creator_history_path(code: ticket.code), class: "btn btn-sm btn-danger") %>
-    <%= link_to("<i class='fas fa-trash-alt'></i>".html_safe, ticket_path(ticket), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-warning") %>
+    <%= link_to("<i class='fas fa-plus-square'></i>".html_safe, new_subticket_path(:code => ticket.code), class: "btn btn-sm btn-info", 'data-toggle' => "tooltip", title:"Create new Subtickets", 'data-placement' => 'right') %>
+    <%= link_to("<i class='fas fa-info-circle'></i>".html_safe, questions_path(:ticket_code => ticket.code), class: "btn btn-sm btn-info", 'data-toggle' => "tooltip", title:"Show questions", 'data-placement' => 'right') %>
+    <%= link_to("<i class='fas fa-pencil-alt'></i>".html_safe, edit_ticket_path(ticket), class: "btn btn-sm btn-primary", 'data-toggle' => "tooltip", title:"Edit Ticket", 'data-placement' => 'right') %>
+    <%= link_to("<i class='fas fa-history'></i>".html_safe, creator_history_path(code: ticket.code), class: "btn btn-sm btn-danger", 'data-toggle' => "tooltip", title:"History", 'data-placement' => 'right') %>
+    <%= link_to("<i class='fas fa-trash-alt'></i>".html_safe, ticket_path(ticket), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-warning", 'data-toggle' => "tooltip", title:"Delete", 'data-placement' => 'right') %>
   </td>
 </tr>
