@@ -1,4 +1,5 @@
 require "json"
+require 'fileutils'
 
 class Creator::SubticketsController < ApplicationController
   before_action :authenticate_user!
@@ -56,8 +57,9 @@ class Creator::SubticketsController < ApplicationController
     ques = subticket.ticket.questions
     result_ques = subticket.result_ques
     result_ans = subticket.result_ans
-    write_ques_ans(ques, subticket, result_ques, result_ans)
-    flash[:notice] = "Subticket download to Download!."
+    write_ques_ans_to_public(ques, subticket, result_ques, result_ans)
+
+    flash[:notice] = "Subticket download successfully. Please check at Downloads directory!"
     redirect_back(fallback_location: subtickets_path)
   end
 
@@ -86,9 +88,12 @@ class Creator::SubticketsController < ApplicationController
     content.to_s
   end
 
-  def write_ques_ans(ques, subticket, result_ques, result_ans)
-    f1 = File.open("./#{subticket.code}-Question.txt", "w+")
-    f2 = File.open("./#{subticket.code}-Ans.txt", "w+")
+  def write_ques_ans_to_public(ques, subticket, result_ques, result_ans)
+    path = "#{Dir.home}/Downloads/#{subticket.code}"
+    FileUtils.mkdir_p path
+
+    f1 = File.open("#{path}/#{subticket.code}-Question.doc", "w+")
+    f2 = File.open("#{path}/#{subticket.code}-Ans.doc", "w+")
     f1.puts("#{subticket.code}")
     f2.puts("#{subticket.code} --ANSWERS --")
     if result_ques == true
@@ -119,6 +124,7 @@ class Creator::SubticketsController < ApplicationController
         end
       end
     end
+
     f1.close
     f2.close
   end
