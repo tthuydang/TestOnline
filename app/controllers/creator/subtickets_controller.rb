@@ -56,7 +56,7 @@ class Creator::SubticketsController < ApplicationController
     ques = subticket.ticket.questions
     result_ques = subticket.result_ques
     result_ans = subticket.result_ans
-    write_ques_ans(ques, subticket, result_ques, result_ans)
+    write_ques_ans(ques, subticket)
     flash[:notice] = "Subticket download to Download!."
     redirect_back(fallback_location: subtickets_path)
   end
@@ -86,7 +86,7 @@ class Creator::SubticketsController < ApplicationController
     content.to_s
   end
 
-  def write_ques_ans(ques, subticket, result_ques, result_ans)
+  def write_ques_ans(ques, subticket)
     f1 = File.open("./#{subticket.code}-Question.txt", "w+")
     f2 = File.open("./#{subticket.code}-Ans.txt", "w+")
     f1.puts("#{subticket.code}")

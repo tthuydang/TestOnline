@@ -18,7 +18,7 @@
               <%= link_to("<i class='fab fa-cuttlefish'></i> Your Categories".html_safe, categories_path, class: "dropdown-item") %>
               <div class="dropdown-divider"></div>
             <% end %>
-            <%= link_to "<i class='fas fa-user'></i> Profile".html_safe, users_path(:id => current_user), class: "dropdown-item" %>
+            <%= link_to "<i class='fas fa-user'></i> Profile".html_safe, users_path, class: "dropdown-item" %>
             <%= link_to "<i class='fas fa-user-edit'></i> Edit profile".html_safe, edit_user_registration_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to "<i class='fas fa-sign-out-alt'></i> Logout".html_safe, destroy_user_session_path, method: :delete, class: "dropdown-item" %>

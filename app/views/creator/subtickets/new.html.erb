@@ -11,17 +11,16 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-
-<h2 style="color: gray">New Subticket</h2>
-<%= form_for(@subticket) do |f| %>
-  <%= f.hidden_field :ticket_id, :value => @ticket.id %>
-  Amount of test: 
-  <%= f.number_field :amount, :value => 1, in: 1...11, class: "form-control" %><br/>
-  <%= f.check_box :result_ques %> Random question?<br />
-  <%= f.check_box :result_ans %> Random answer?<br />
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
-
+      <h2 style="color: gray">New Subticket</h2>
+      <%= form_for(@subticket) do |f| %>
+        <%= f.hidden_field :ticket_id, :value => @ticket.id %>
+        Amount of test: 
+        <%= f.number_field :amount, :value => 1, in: 1...11, class: "form-control" %><br/>
+        <%= f.check_box :result_ques %> Random question?<br />
+        <%= f.check_box :result_ans %> Random answer?<br />
+        <%= link_to "Subticket" , subtickets_path,class: "btn btn-primary"%>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
     </div>
     <div class="col-md-2"></div>
   </div>

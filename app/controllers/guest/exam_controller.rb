@@ -71,7 +71,7 @@ class Guest::ExamController < ApplicationController
       curr_history.updated_at = Time.now
       if curr_history.save
         session[:curr_history_id] = curr_history.id
-        session[:start_time] = Time.now.strftime('%H:%M:%S').to_s
+        session[:start_time] = Time.now.strftime("%H:%M:%S").to_s
       end
     end
   end
@@ -88,7 +88,7 @@ class Guest::ExamController < ApplicationController
   end
 
   def completed_time(start_time)
-    now = Time.parse(Time.now.strftime('%H:%M:%S'))
+    now = Time.parse(Time.now.strftime("%H:%M:%S"))
     start = Time.parse(start_time.to_s)
     Time.at(now - start).utc.strftime("%H:%M:%S")
   end
