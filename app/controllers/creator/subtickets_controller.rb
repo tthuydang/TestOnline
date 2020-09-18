@@ -103,10 +103,8 @@ class Creator::SubticketsController < ApplicationController
       JSON.parse(subticket.content).each do |item|
         ques << Question.find(item[0])
       end
-      puts "---------- co xao tron"
     else # ko xao tron cau hoi
       ques = Ticket.find(subticket.ticket_id).questions
-      puts "---------- #{ques.map(&:id)}"
     end
 
     ques.each_with_index do |q, i|
