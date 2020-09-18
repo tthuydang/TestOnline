@@ -71,7 +71,7 @@ class Creator::TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:code, :title, :image, :description, :max_time, :category_id, :start_date, :finish_date)
+    params.require(:ticket).permit(:code, :title, :image, :description, :max_time, :category_id, :competition_code, :start_date, :finish_date)
   end
 
   def file_param

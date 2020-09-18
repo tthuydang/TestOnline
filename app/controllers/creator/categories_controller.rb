@@ -4,6 +4,7 @@ class Creator::CategoriesController < ApplicationController
   before_action :check_if_creator
 
   def index
+    @categories = Category.all
   end
 
   def new
@@ -47,6 +48,6 @@ class Creator::CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:title)
+    params.require(:category).permit(:title, :image)
   end
 end
