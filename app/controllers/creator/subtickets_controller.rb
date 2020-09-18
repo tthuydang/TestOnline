@@ -54,10 +54,9 @@ class Creator::SubticketsController < ApplicationController
 
   def download_subticket
     subticket = Subticket.find(params[:subticket_id])
-    ques = subticket.ticket.questions
     result_ques = subticket.result_ques
     result_ans = subticket.result_ans
-    write_ques_ans_to_public(ques, subticket, result_ques, result_ans)
+    write_ques_ans_to_public(subticket, result_ques, result_ans)
 
     flash[:notice] = "Subticket download successfully. Please check at Downloads directory!"
     redirect_back(fallback_location: subtickets_path)
@@ -88,7 +87,7 @@ class Creator::SubticketsController < ApplicationController
     content.to_s
   end
 
-  def write_ques_ans_to_public(ques, subticket, result_ques, result_ans)
+  def write_ques_ans_to_public(subticket, result_ques, result_ans)
     path = "#{Dir.home}/Downloads/#{subticket.code}"
     FileUtils.mkdir_p path
 
@@ -96,16 +95,25 @@ class Creator::SubticketsController < ApplicationController
     f2 = File.open("#{path}/#{subticket.code}-Ans.doc", "w+")
     f1.puts("#{subticket.code}")
     f2.puts("#{subticket.code} --ANSWERS --")
-    if result_ques == true
-      ques = ques.shuffle
+
+    ques = Ticket.find(subticket.ticket_id).questions
+
+    if result_ques == true # neu muon xao tron cau hoi
+      ques = []
+      JSON.parse(subticket.content).each do |item|
+        ques << Question.find(item[0])
+      end
     end
+
     ques.each_with_index do |q, i|
       f1.puts ""
       f2.puts ""
       f1.puts("Question #{i + 1}: #{q.question}")
       f2.puts("Question #{i + 1}: #{q.question}")
-      if result_ans == true
-        q.answers.shuffle.each_with_index do |a, k|
+
+      if result_ans == true # neu muon xao tron dap an
+        JSON.parse(subticket.content)[i][1].each_with_index do |a_id, k|
+          a = Answer.find(a_id)
           f1.puts("A#{k + 1}: #{a.answer}")
           if a.is_correct == true
             f2.puts("A#{k + 1}: #{a.answer}" + "--|True|--")
