@@ -39,7 +39,7 @@
         <a id="next" onclick="plusSlides(1)">Next</a>
       </div>
       <div style="float: right">
-        <%= link_to("Submit", finish_path(ticket_id: @ticket.id), class: "btn btn-sm btn-outline-secondary") %>
+        <%= link_to("Submit", finish_path(ticket_id: @ticket.id), data: { confirm: "Are you certain ?" }, class: "btn btn-sm btn-outline-secondary", 'data-toggle' => "tooltip", title:"Nộp bài", 'data-placement' => 'right') %>
       </div>
     </div>
   </div>

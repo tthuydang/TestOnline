@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/karnov/htmltoword
+  revision: d58f9114535651daacaafa027191aab4755a78d9
+  specs:
+    htmltoword (1.1.1)
+      actionpack
+      nokogiri
+      rubyzip (>= 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -256,6 +265,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font_awesome5_rails
+  htmltoword!
   jbuilder (~> 2.7)
   letter_opener_web
   listen (~> 3.2)
@@ -265,6 +275,7 @@ DEPENDENCIES
   pry
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
+  responders
   sass-rails (>= 6)
   selenium-webdriver
   spring
