@@ -16,7 +16,8 @@ class Creator::SubticketsController < ApplicationController
   end
 
   def show
-    @content = JSON.parse(Subticket.find(params[:id]).content)
+    @subticket = Subticket.find(params[:id])
+    @content = JSON.parse(@subticket.content)
   end
 
   def new

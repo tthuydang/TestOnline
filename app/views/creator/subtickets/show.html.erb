@@ -13,6 +13,7 @@
       <%= render("shared/alert") %>
 
 <div>
+  <h2 style="color: gray; margin-bottom: 50px; text-align: center"><%= "#{@subticket.ticket.title} - #{@subticket.code}" %></h2>
   <% @quest_index = 0 %>
   <%= render partial: "/creator/subtickets/shared/questions", collection: @content, as: :item %>
 </div>
