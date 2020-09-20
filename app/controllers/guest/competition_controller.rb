@@ -19,8 +19,8 @@ class Guest::CompetitionController < ApplicationController
       flash[:notice] = "Competition code is invalid. Please check your code and try again!"
       redirect_back(fallback_location: confirm_path)
     else
-      now = DateTime.now.strftime("%d/%m/%Y")
-      if ticket.start_date.strftime("%d/%m/%Y") <= now && ticket.finish_date.strftime("%d/%m/%Y") >= now
+      now = DateTime.now.strftime("%d/%m/%Y - %H:%M:%S")
+      if ticket.start_date.strftime("%d/%m/%Y - %H:%M:%S") <= now && ticket.finish_date.strftime("%d/%m/%Y - %H:%M:%S") >= now
         redirect_to intro_path(code: ticket.code)
       else
         flash[:notice] = "This ticket is outdated. Please choose another one!"
