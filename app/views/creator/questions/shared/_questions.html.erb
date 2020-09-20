@@ -1,16 +1,11 @@
 <tr>
   <td>
-    <%= "Q#{@ques_index += 1}: #{qs.question}" %> <br>
-    <div class="btn-group">
-      <button style="background-color: #ddeeff" type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Answers
-      </button>
-      <div class="dropdown-menu">
-        <%= render partial: "/creator/questions/shared/answers", collection: qs.answers, as: :ans %>
-      </div>
-    </div>
+    <b><%= "Question #{@ques_index += 1}: #{qs.question}" %></b> <br>
+    <%  @ans_index = 0
+        @options = ['Huy', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'] %>
+    <%= render partial: "/creator/questions/shared/answers", collection: qs.answers, as: :ans %>
   </td>
   <td style="text-align: center">
-    <%= link_to("<i class='fas fa-trash-alt'></i>".html_safe, question_path(qs), method: :delete, data: { confirm: 'Are you certain?' }, class:"btn btn-warning", 'data-toggle' => "tooltip", title:"Delete", 'data-placement' => 'right') %>
+    <%= link_to("<i class='fas fa-trash-alt'></i>".html_safe, question_path(qs), method: :delete, data: { confirm: 'Are you certain?' }, class:"btn btn-sm btn-primary align-middle", 'data-toggle' => "tooltip", title:"Delete", 'data-placement' => 'right') %>
   </td>
 </tr>
