@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: TestOnline_production
-  username: TestOnline
-  password: <%= ENV['TESTONLINE_DATABASE_PASSWORD'] %>
+  username: nywwpoeswxpoqv
+  password: d619bc5fe96c7cafca54bfaa3993827f5d73b07bb092a3feea797957e6013ac4
