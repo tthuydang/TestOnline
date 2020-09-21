@@ -1,5 +1,6 @@
 <div>
   <%= render "shared/navigation" %>
+  <%= image_tag("cambridge_banner.jpg", width:"100%") %>
   <p class="notice"><% notice %></p>
   <p class="alert"><% alert %> </p>
 </div>
@@ -9,7 +10,6 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-
       <div style="padding: 70px">
         <h1 style="color: gray; margin-bottom: 30px">Đề thi: <%= @ticket.code %></h1>
         <p>
@@ -26,12 +26,11 @@
         </p>
         <%= link_to("Start", exam_index_path(:code =>@ticket.code), class: "btn btn-info form-control", style: "margin-top: 50px") %>
       </div>
-
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<div class="container">
+<div class="">
   <div class="row" style="padding-top:5%;">
   </div>
 </div>

@@ -1,5 +1,5 @@
 require "json"
-require 'fileutils'
+require "fileutils"
 
 class Creator::SubticketsController < ApplicationController
   before_action :authenticate_user!
@@ -57,9 +57,11 @@ class Creator::SubticketsController < ApplicationController
     subticket = Subticket.find(params[:subticket_id])
     result_ques = subticket.result_ques
     result_ans = subticket.result_ans
+
     write_ques_ans(subticket, result_ques, result_ans)
 
     flash[:notice] = "Subticket download successfully. Please check at Downloads directory!"
+
     redirect_back(fallback_location: subtickets_path)
   end
 
@@ -95,6 +97,7 @@ class Creator::SubticketsController < ApplicationController
 
     f1 = File.open("#{path}/#{subticket.code}-Question.doc", "w+")
     f2 = File.open("#{path}/#{subticket.code}-Ans.doc", "w+")
+
     f1.puts("#{subticket.code}")
     f2.puts("#{subticket.code} --ANSWERS --")
 

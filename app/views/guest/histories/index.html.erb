@@ -1,6 +1,7 @@
+<!--Header -->
 <div>
   <%= render "shared/navigation" %>
-  <%= image_tag("cambridge_banner.jpg") %>
+  <%= image_tag("cambridge_banner.jpg", width:"100%") %>
   <p class="notice"><% notice %></p>
   <p class="alert"><% alert %> </p>
 </div>
@@ -11,35 +12,49 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-
-      <% (1..6).each do |i| %>
+      <!--Body -->
+      <h1 style="color: gray">Your histories: </h1>
+      <br>
+      <% @histories.each do |i| %>
         <div style="margin-bottom: 80px; padding: 10px; border-width:2px; border-style:outset;">
-          <h3 style="color: gray">Version <%= i %></h3>
-          <p style="color: gray">65 questions | 2 hours 10 minutes | 72% correct required to pass</p>
-          <div class="container" style="background-color: #ffddee;">
+          <h3 style="color: gray"> <%= i.ticket.code %></h3>
+          <p style="color: gray"> <%= i.total_question %> Question  | Time: <%= i.ticket.max_time.to_s.split[1] %> | Date: <%= i.updated_at.to_s.split[0].split("-")[2]+"/"+i.updated_at.to_s.split[0].split("-")[1]+"/"+i.updated_at.to_s.split[0].split("-")[0] %> </p>
+          <div class="container-correct">
             <div class="row">
               <div class="col-md-3">
-                <p><h5 style="color: red">Failed</h5></p>
+                <p>
+                  <% if i.is_passed == true  %>
+                    <h5 style="color: green"> PASS </h5>
+                  <% else %>
+                    <h5 style="color: red"> FAILSE </h5>
+                  <% end %>
+                </p>
               </div>
               <div class="col-md-3">
-                <p><h6 style="color: black">60% correct</h6></p>
+                <p>
+                  <h6 style="color: black"><%= (i.total_correct * 100) / i.total_question  %>% Correct</h6>
+                </p>
               </div>
               <div class="col-md-3">
-                <p><h6>1 hours 42 minutes</h6></p>
+                <p>
+                  <h6> <%= i.completed_time %> </h6>
+                </p>
               </div>
               <div class="col-md-3">
-                <p><h6>10/05/2020</h6></p>
+                <p>
+                  <h6><%= link_to "View", report_exam_path(id: i.id)%></h6>
+                </p>
               </div>
             </div>
           </div>
         </div>
       <% end %>
-
+      <!--Footer -->
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<div class="container">
+<div class="">
   <div class="row" style="padding-top:5%;">
     <%= render("shared/footer") %>
   </div>

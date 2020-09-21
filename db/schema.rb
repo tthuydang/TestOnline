@@ -71,12 +71,12 @@ ActiveRecord::Schema.define(version: 2020_09_17_040926) do
 
   create_table "subtickets", force: :cascade do |t|
     t.string "code"
-    t.text "content"
     t.bigint "ticket_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "result_ques"
     t.boolean "result_ans"
+    t.text "content"
     t.index ["ticket_id"], name: "index_subtickets_on_ticket_id"
   end
 

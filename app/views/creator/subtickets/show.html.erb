@@ -1,6 +1,6 @@
 <div>
   <%= render "shared/navigation" %>
-  <%= image_tag("cambridge_banner.jpg") %>
+  <%= image_tag("cambridge_banner.jpg", width:"100%") %>
   <p class="notice"><% notice %></p>
   <p class="alert"><% alert %> </p>
 </div>
@@ -11,18 +11,16 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-
-<div>
-  <h2 style="color: gray; margin-bottom: 50px; text-align: center"><%= "#{@subticket.ticket.title} - #{@subticket.code}" %></h2>
-  <% @quest_index = 0 %>
-  <%= render partial: "/creator/subtickets/shared/questions", collection: @content, as: :item %>
-</div>
-
+      <div>
+        <h2 style="color: gray; margin-bottom: 50px; text-align: center"><%= "#{@subticket.ticket.title} - #{@subticket.code}" %></h2>
+        <% @quest_index = 0 %>
+        <%= render partial: "/creator/subtickets/shared/questions", collection: @content, as: :item %>
+      </div>
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<div class="container">
+<div class="">
   <div class="row" style="padding-top:5%;">
     <%= render("shared/footer") %>
   </div>

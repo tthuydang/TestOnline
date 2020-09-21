@@ -11,20 +11,10 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-      <h2 style="color: gray">Your Subtickets:</h2>
       <div>
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Code</th>
-              <th scope="col">Ticket</th>
-              <th scope="col" style="text-align: center">Options</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= render partial: "/creator/subtickets/shared/subtickets", collection: @subtickets, as: :subticket %>
-          </tbody>
-        </table>
+        <h2 style="color: gray; margin-bottom: 50px; text-align: center"><%= @code_exam %></h2>
+        <% @quest_index = 0 %>
+        <%= render partial: "/creater/histories/shared/questions", collection: @questions, as: :ques %>
       </div>
     </div>
     <div class="col-md-2"></div>
