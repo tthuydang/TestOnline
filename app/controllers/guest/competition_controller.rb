@@ -2,7 +2,7 @@ class Guest::CompetitionController < ApplicationController
 
   def index
     category = Category.find_by(title: params[:subject])
-    @tickets = category.tickets.where.not(start_date: nil, finish_date: nil, competition_code: nil)
+    @tickets = category.tickets.where(delete_at: nil).where.not(start_date: nil, finish_date: nil, competition_code: nil)
   end
 
   def confirm
