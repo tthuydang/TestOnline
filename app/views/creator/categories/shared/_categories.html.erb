@@ -2,7 +2,7 @@
   <td><%= item.title %></td>
   <td>123</td>
   <td>
-    <%= link_to("<i class='fas fa-pencil-alt'></i>".html_safe, edit_category_path(item), class:"btn btn-primary") %>
-    <%= link_to("<i class='fas fa-trash-alt'></i>".html_safe, category_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning") %>
+    <%= link_to("<i class='fas fa-pencil-alt'></i>".html_safe, edit_category_path(item), class:"btn btn-sm btn-primary", 'data-toggle' => "tooltip", title:"Edit", 'data-placement' => 'right') %>
+    <%= link_to("<i class='fas fa-trash-alt'></i>".html_safe, category_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-warning", 'data-toggle' => "tooltip", title:"Delete", 'data-placement' => 'right') %>
   </td>
 </tr>

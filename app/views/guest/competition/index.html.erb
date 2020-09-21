@@ -7,30 +7,13 @@
 <div class="container">
   <div class="row" style="padding-top:0%">
     <div class="col-md-2">
-      <%= render "shared/menu" %>
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
+
+      <h2 style="color: gray; margin-bottom: 50px">Competitions:</h2>
       <div class="row">
-        <div class="container">
-          <div style="float: left">
-            <h2 style="color: gray; font-family: 'Roboto Slab', serif;"><%= "#{@title}:" %></h2>
-            <br>
-          </div>
-          <div style="float: right">
-            <%= pagy_bootstrap_nav(@pagy).html_safe %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <%= render partial: "/guest/tickets/shared/tickets", collection: @tickets, as: :ticket %>
-      </div>
-      <div class="row">
-        <div class="container">
-          <div style="float: right">
-            <%= pagy_bootstrap_nav(@pagy).html_safe %>
-          </div>
-        </div>
+        <%= render partial: "/guest/competition/shared/tickets", collection: @tickets, as: :ticket %>
       </div>
       <style>
         .bd-placeholder-img {
@@ -48,9 +31,9 @@
           }
         }
       </style>
+
     </div>
-    <div class="col-md-2">
-    </div>
+    <div class="col-md-2"></div>
   </div>
 </div>
 <div class="container">

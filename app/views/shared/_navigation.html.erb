@@ -3,10 +3,20 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Competition
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% Category.all.each do |category| %>
+              <%= link_to("#{category.title} (#{category.tickets.where.not(start_date: nil, finish_date: nil, competition_code: nil).size})", competition_index_path(:subject => category.title), class: "dropdown-item") %>
+            <% end %>
+          </div>
+        </li>
+        <div style="margin-right: 20px"></div>
         <li class="nav-item active nav-link"><%= link_to(avatar_for(current_user, size: 20)) %>
         </li>
         <li class="nav-item dropdown">
@@ -19,7 +29,8 @@
               <%= link_to("<i class='fab fa-cuttlefish'></i> Your Categories".html_safe, categories_path, class: "dropdown-item") %>
               <div class="dropdown-divider"></div>
             <% end %>
-            <%= link_to "<i class='fas fa-user-edit'></i> Edit profile".html_safe, edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "<i class='fas fa-user'></i> Your Profile".html_safe, users_path(:id => current_user), class: "dropdown-item" %>
+            <%#= link_to "<i class='fas fa-user-edit'></i> Edit profile".html_safe, edit_user_registration_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to "<i class='fas fa-sign-out-alt'></i> Logout".html_safe, destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
@@ -33,11 +44,9 @@
         </li>
       <% end %>
     </ul>
-
     <form class="form-inline mt-2 mt-md-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-
   </div>
 </nav>

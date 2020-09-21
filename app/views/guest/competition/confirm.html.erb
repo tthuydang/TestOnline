@@ -1,0 +1,38 @@
+<div>
+  <%= render "shared/navigation" %>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:0%">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <%= render("shared/alert") %>
+      <div class="container-confirm">
+        <%= render("shared/alert") %>
+        <%= form_with url: {controller: "competition", action: "confirm_code"}, remote: true do |f| %>
+          <p>
+            <%= f.label "Enter the competition code:" %>
+            <%= f.text_field :competition_code, required: true, autofocus: true, class: "form-control" %>
+          </p>
+          <p>
+            <%= f.text_field :ticket_id, value: @ticket.id, hidden: true %>
+          </p>
+          <p>
+            <%= f.submit "Confirm", class: "btn btn-success form-control" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:5%;">
+  </div>
+</div>
+
+<style>
+  .container-confirm{
+    margin: 30% auto;
+  }
+</style>
