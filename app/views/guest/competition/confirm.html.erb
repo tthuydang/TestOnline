@@ -9,6 +9,8 @@
       <%= render("shared/alert") %>
       <div class="container-confirm">
         <%= render("shared/alert") %>
+        <p>Start Date: <%= @ticket.start_date.strftime("%H:%M:%S - %d/%m/%Y") %></p>
+        <p>Finish Date: <%= @ticket.finish_date.strftime("%H:%M:%S - %d/%m/%Y") %></p>
         <%= form_with url: {controller: "competition", action: "confirm_code"}, remote: true do |f| %>
           <p>
             <%= f.label "Enter the competition code:" %>
