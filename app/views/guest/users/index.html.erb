@@ -1,107 +1,110 @@
 <!--header -->
 <div>
   <%= render "shared/navigation" %>
-  <%= image_tag("cambridge_banner.jpg") %>
+  <%= image_tag("cambridge_banner.jpg", width:"100%") %>
   <p class="notice"><% notice %></p>
   <p class="alert"><% alert %> </p>
 </div>
 <!--body -->
-<div class="container">
-  <div class="row" style="padding-top:0%">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-8">
-      <%= render("shared/alert") %>
-      <div class="index-show">
-        <h1 style="color: gray">Your profile :</h1>
-        <div class="user-info-show">
-          <div class="user-avatar-show">
-            <%= avatar_for(current_user) %>
-          </div>
-          <div class="user-mail-name-show">
-            <h3><%= current_user.firstname + " " + current_user.lastname %></h3>
-            <p><%= current_user.email %></p>
-            <% if current_user.role_user != "CREATOR" %>
-              <%= form_tag charges_path do %>
-                <article>
-                  <% if flash[:error].present? %>
-                    <div id="error_explanation">
-                      <p><%= flash[:error] %></p>
-                    </div>
-                  <% end %>
-                  <label class="amount">
-                    <span>Do you want to be Creater?</span>
-                  </label>
-                </article>
-                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+<div>
+  <div class="container">
+    <div class="row" style="padding-top:0%">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <%= render("shared/alert") %>
+        <div class="index-show">
+          <h1 style="color: gray">Your profile :</h1>
+          <div class="user-info-show">
+            <div class="user-avatar-show">
+              <%= avatar_for(current_user) %>
+            </div>
+            <div class="user-mail-name-show">
+              <h3><%= current_user.firstname + " " + current_user.lastname %></h3>
+              <p><%= current_user.email %></p>
+              <% if current_user.role_user != "CREATOR" %>
+                <%= form_tag charges_path do %>
+                  <article>
+                    <% if flash[:error].present? %>
+                      <div id="error_explanation">
+                        <p><%= flash[:error] %></p>
+                      </div>
+                    <% end %>
+                    <label class="amount">
+                      <span>Do you want to be Creater?</span>
+                    </label>
+                  </article>
+                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                         data-description="Upgrade to creator!"
                         data-amount=""
                         data-panel-label="Upgrade"
                         data-locale="auto"></script>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
+            <div class="user-btn-edit-show">
+              <%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary user-button-el" %>
+              <br>
+              <%= link_to "History",histories_path ,class: "btn btn-primary user-button-el" %>
+            </div>
           </div>
-          <div class="user-btn-edit-show">
-            <%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary user-button-el" %>
-            <br>
-            <%= link_to "History",histories_path ,class: "btn btn-primary user-button-el" %>
-          </div>
+        </>
+        <div class="col-md-2">
         </div>
-      </>
-      <div class="col-md-2">
       </div>
     </div>
   </div>
-  <!--footer -->
-  <div class="container">
-    <div class="row" style="padding-top:5%;">
-      <%= render("shared/footer") %>
-    </div>
+</div>
+<!--footer -->
+<div class="">
+  <div class="row" style="padding-top:5%;">
+    <%= render("shared/footer") %>
   </div>
-  <!--CSS-->
-  <style>
-    .index-show {
-      padding: 25px;
-    }
-    .user-info-show{
-      display: flex;
-      flex-direction: row;
-    }
-    .user-avatar-show img{
-      width: 200px;
-      height: 200px;
-    }
-    .user-btn-edit-show{
-      right: 20%;
-      position:absolute;
-    }
-    .user-button-el{
-      text-transform: none;
-      visibility: visible !important;
-      box-sizing: border-box;
-      border-radius: 8px;
-      background-image: linear-gradient(#7dc5ee,#008cdd 85%,#30a2e4);
-      box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
-      font-size: 14px;
-      color: #fff;
-      font-weight: bold;
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
-      display: block;
-      min-height: 30px;
-      position: relative;
-      padding: 0 12px;
-      height: 30px;
-      line-height: 30px;
-      background: #1275ff;
-    }
-     .stripe-button-el span::before {
-        content: 'Upgrade Creator';
-        display: block !important;
-    }
-    .stripe-button-el span {
-        content: '';
-        display: none;
-    }
-  </style>
+</div>
+<!--CSS-->
+<style>
+  .index-show {
+    padding: 25px;
+  }
+  .user-info-show{
+    display: flex;
+    flex-direction: row;
+  }
+  .user-avatar-show img{
+    width: 200px;
+    height: 200px;
+  }
+  .user-btn-edit-show{
+    right: 20%;
+    position:absolute;
+  }
+  .user-button-el{
+    text-transform: none;
+    visibility: visible !important;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-image: linear-gradient(#7dc5ee,#008cdd 85%,#30a2e4);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    display: block;
+    min-height: 30px;
+    position: relative;
+    padding: 0 12px;
+    height: 30px;
+    line-height: 30px;
+    background: #1275ff;
+  }
+   .stripe-button-el span::before {
+      content: 'Upgrade Creator';
+      display: block !important;
+  }
+  .stripe-button-el span {
+      content: '';
+      display: none;
+  }
+</style>

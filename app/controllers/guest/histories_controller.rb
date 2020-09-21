@@ -13,6 +13,5 @@ class Guest::HistoriesController < ApplicationController
     @code_exam = details.first.history.ticket.code
     @answers_id = details.map(&:answer_id) # mang answer_id cac dap an dc chon
     @questions = details.first.history.ticket.questions
-    p "============ #{@answers_id}"
   end
 end

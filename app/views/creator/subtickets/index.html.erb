@@ -1,6 +1,6 @@
 <div>
   <%= render "shared/navigation" %>
-  <%= image_tag("cambridge_banner.jpg") %>
+  <%= image_tag("cambridge_banner.jpg", width:"100%") %>
   <p class="notice"><% notice %></p>
   <p class="alert"><% alert %> </p>
 </div>
@@ -11,28 +11,26 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-
-<h2 style="color: gray">Your Subtickets:</h2>
-<div>
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Code</th>
-        <th scope="col">Ticket</th>
-        <th scope="col" style="text-align: center">Options</th>
-      </tr>
-    </thead>
-    <tbody>
-    <%= render partial: "/creator/subtickets/shared/subtickets", collection: @subtickets, as: :subticket %>
-    </tbody>
-  </table>
-</div>
-
+      <h2 style="color: gray">Your Subtickets:</h2>
+      <div>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Code</th>
+              <th scope="col">Ticket</th>
+              <th scope="col" style="text-align: center">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "/creator/subtickets/shared/subtickets", collection: @subtickets, as: :subticket %>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<div class="container">
+<div class="">
   <div class="row" style="padding-top:5%;">
     <%= render("shared/footer") %>
   </div>

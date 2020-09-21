@@ -1,1 +1,8 @@
-<p><b style="color: red"><%= "#{@options[@ans_index += 1]}. " %></b><%= ans.answer %></p>
+<p>
+  <b style="color:red"><%= "#{@options[@ans_index += 1]}. " %></b>
+  <% if @answers_id.include?(ans.id)  %>
+    <b style="color:green"><%= ans.answer %></b>
+  <% else %>
+    <%= ans.answer %>
+  <% end %>
+</p>
