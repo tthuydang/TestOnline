@@ -1,6 +1,6 @@
 <div>
   <%= render "shared/navigation" %>
-  <%= image_tag("cambridge_banner.jpg") %>
+  <%= image_tag("cambridge_banner.jpg", width:"100%") %>
   <p class="notice"><% notice %></p>
   <p class="alert"><% alert %> </p>
 </div>
@@ -10,71 +10,60 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <p>
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar, accept: "image/png,image/jpg,image/jpeg" %>
-    </p>
-  </div>
-
-  <div class="field">
-    <p>
-      <%= f.label :firstname %><br />
-      <%= f.text_field :firstname, class: "form-control" %>
-    </p>
-  </div>
-
-  <div class="field">
-    <p>
-      <%= f.label :lastname %><br />
-      <%= f.text_field :lastname, class: "form-control" %>
-    </p>
-  </div>
-
-  <div class="field">
-    <p>
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-    </p>
-  </div>
-
-  <div class="field">
-    <p>
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-    </p>
-  </div>
-
-  <div class="field">
-    <p>
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-    </p>
-  </div>
-
-  <div class="actions">
-    <p>
-      <%= f.submit "Sign up", class: "btn btn-success" %>
-    </p>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
+      <h2 style="color: gray">Sign up</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <p>
+            <%= f.label :avatar %><br />
+            <%= f.file_field :avatar, accept: "image/png,image/jpg,image/jpeg" %>
+          </p>
+        </div>
+        <div class="field">
+          <p>
+            <%= f.label :firstname %><br />
+            <%= f.text_field :firstname, class: "form-control" %>
+          </p>
+        </div>
+        <div class="field">
+          <p>
+            <%= f.label :lastname %><br />
+            <%= f.text_field :lastname, class: "form-control" %>
+          </p>
+        </div>
+        <div class="field">
+          <p>
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </p>
+        </div>
+        <div class="field">
+          <p>
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </p>
+        </div>
+        <div class="field">
+          <p>
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </p>
+        </div>
+        <div class="actions">
+          <p>
+            <%= f.submit "Sign up", class: "btn btn-success" %>
+          </p>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<div class="container">
+<div class="">
   <div class="row" style="padding-top:5%;">
     <%= render("shared/footer") %>
   </div>

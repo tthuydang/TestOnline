@@ -1,6 +1,6 @@
 <div>
   <%= render "shared/navigation" %>
-  <%= image_tag("cambridge_banner.jpg") %>
+  <%= image_tag("cambridge_banner.jpg", width:"100%") %>
   <p class="notice"><% notice %></p>
   <p class="alert"><% alert %> </p>
 </div>
@@ -11,34 +11,31 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-
-<h2 style="color: gray">Your Categories:</h2>
-<% if current_user.categories.size == 0 %>
-  <tr>null</tr>
-<% else %>
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr style="text-align: center">
-        <th scope="col">Category</th>
-        <th scope="col">Total Ticket</th>
-        <th scope="col">Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render partial: "/creator/categories/shared/categories", collection: current_user.categories, as: :item %>
-    </tbody>
-  </table>
-<% end %>
-
-<div style="margin-top: 20px">
-  <%= link_to("Add new Category", new_category_path, class:"btn btn-success") %>
-</div>
-
+      <h2 style="color: gray">Your Categories:</h2>
+      <% if current_user.categories.size == 0 %>
+        <tr></tr>
+      <% else %>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr style="text-align: center">
+              <th scope="col">Category</th>
+              <th scope="col">Total Ticket</th>
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "/creator/categories/shared/categories", collection: current_user.categories, as: :item %>
+          </tbody>
+        </table>
+      <% end %>
+      <div style="margin-top: 20px">
+        <%= link_to("Add new Category", new_category_path, class:"btn btn-success") %>
+      </div>
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<div class="container">
+<div class="">
   <div class="row" style="padding-top:5%;">
     <%= render("shared/footer") %>
   </div>

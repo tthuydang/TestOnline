@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TestOnline</title>
+    <title>Quiz Online</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
     <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
+    <style>
+      .row{
+        margin : 0;padding : 0;
+      }
+    </style>
   </head>
-
   <body class="bg-light">
     <%= yield %>
   </body>

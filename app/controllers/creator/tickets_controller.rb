@@ -34,7 +34,7 @@ class Creator::TicketsController < ApplicationController
   end
 
   def edit
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.find_by(id: params[:id], user_id: current_user.id)
   end
 
   def update

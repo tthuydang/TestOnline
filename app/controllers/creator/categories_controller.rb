@@ -4,6 +4,7 @@ class Creator::CategoriesController < ApplicationController
   before_action :check_if_creator
 
   def index
+    @categories = Category.all
   end
 
   def new

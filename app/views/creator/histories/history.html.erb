@@ -1,6 +1,6 @@
 <div>
   <%= render "shared/navigation" %>
-  <%= image_tag("cambridge_banner.jpg") %>
+  <%= image_tag("cambridge_banner.jpg", width:"100%") %>
   <p class="notice"><% notice %></p>
   <p class="alert"><% alert %> </p>
 </div>
@@ -11,29 +11,27 @@
     </div>
     <div class="col-md-8">
       <%= render("shared/alert") %>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col" style="text-align: center">Completed time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @his_index = 0 %>
-    <% (1..2).each do |his| %>
-      <tr>
-        <td>Faild</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col" style="text-align: center">Completed time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @his_index = 0 %>
+          <% (1..2).each do |his| %>
+            <tr>
+              <td>Faild</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<div class="container">
+<div class="">
   <div class="row" style="padding-top:5%;">
     <%= render("shared/footer") %>
   </div>

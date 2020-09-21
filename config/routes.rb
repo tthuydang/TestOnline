@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: "/letter_opener_web" if Rails.env.development?
   devise_for :users, controller: { registrations: "registrations" }
   resources :charges
 
@@ -9,12 +8,13 @@ Rails.application.routes.draw do
     resources :exam
     resources :users
     resources :competition
-
+    resources :charges
     get "intro" => "/guest/tickets#intro"
     get "oncheckboxchange" => "/guest/exam#oncheckboxchange"
     get "finish" => "/guest/exam#finish"
     get "confirm" => "/guest/competition#confirm"
     post "confirm_code" => "/guest/competition#confirm_code"
+    get "report_exam" => "/guest/histories#report_exam"
   end
 
   scope module: "creator" do
