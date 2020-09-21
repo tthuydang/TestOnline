@@ -9,7 +9,10 @@ class Guest::HistoriesController < ApplicationController
 
   def report_exam
     details = HistoryDetail.where(history_id: params[:id])
+    @stt = details.first.history.id
+    @code_exam = details.first.history.ticket.code
     @answers_id = details.map(&:answer_id) # mang answer_id cac dap an dc chon
     @questions = details.first.history.ticket.questions
+    p "============ #{@answers_id}"
   end
 end

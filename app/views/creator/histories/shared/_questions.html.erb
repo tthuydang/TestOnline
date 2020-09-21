@@ -1,0 +1,9 @@
+<p><b style="color: gray">Question <%= @quest_index += 1 %>: </b><%= ques.question %></p>
+<div>
+  <%
+  @ans_index = 0
+  @options = ['Huy', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  %>
+  <%= render partial: "/creator/histories/shared/answers", collection: ques.answers, as: :ans %>
+</div>
+<p>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</p>
