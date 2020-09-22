@@ -15,14 +15,11 @@ class Guest::ExamController < ApplicationController
     create_history_and_session
     curr_answer = Answer.find(params[:answer_id])
     curr_history = History.find(session[:curr_history_id])
-
     # nếu session đã tồn tại nhưng là của đề thi khác(do lần trước chưa submit) thì xóa session đi
     if curr_history != nil && curr_answer.question.ticket_id != curr_history.ticket_id
       session.delete(:curr_history_id)
-      session.delete(:start_time)
       create_history_and_session
     end
-
     curr_details = HistoryDetail.where(history_id: session[:curr_history_id], answer_id: curr_answer.id, question_id: curr_answer.question_id).first
     if curr_details == nil # nếu tích vô thì lưu
       details = HistoryDetail.new
@@ -45,13 +42,10 @@ class Guest::ExamController < ApplicationController
       history = History.find(session[:curr_history_id])
       history.total_correct = total_correct(history.ticket_id, history.id)
       history.is_passed = is_passed(history.total_question, history.total_correct)
-      history.completed_time = completed_time(session[:start_time])
+      history.completed_time = completed_time(params[:time_complete].to_i)
       history.updated_at = Time.now
       history.save
-
       session.delete(:curr_history_id)
-      session.delete(:start_time)
-
       redirect_to histories_path
     end
   end
@@ -71,7 +65,6 @@ class Guest::ExamController < ApplicationController
       curr_history.updated_at = Time.now
       if curr_history.save
         session[:curr_history_id] = curr_history.id
-        session[:start_time] = Time.now.strftime("%H:%M:%S").to_s
       end
     end
   end
@@ -87,10 +80,8 @@ class Guest::ExamController < ApplicationController
     total
   end
 
-  def completed_time(start_time)
-    now = Time.parse(Time.now.strftime("%H:%M:%S"))
-    start = Time.parse(start_time.to_s)
-    Time.at(now - start).utc.strftime("%H:%M:%S")
+  def completed_time(time_complete_miliseconds)
+    "#{time_complete_miliseconds / (1000 * 60 * 60) % 60}:#{time_complete_miliseconds / (1000 * 60) % 60}:#{time_complete_miliseconds / 1000 % 60}"
   end
 
   def is_passed(total_question, total_correct)

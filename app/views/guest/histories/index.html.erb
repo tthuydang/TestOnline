@@ -23,11 +23,17 @@
             <div class="row">
               <div class="col-md-3">
                 <p>
-                  <% if i.is_passed == true  %>
-                    <h5 style="color: green"> PASS </h5>
-                  <% else %>
-                    <h5 style="color: red"> FAILSE </h5>
-                  <% end %>
+                  <h6><% if i.is_passed == true  %>
+                      <h5 style="color: green"> PASS </h5>
+                    <% else %>
+                      <h5 style="color: red"> FAILSE </h5>
+                    <% end %>
+                  </h6>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <h6><%= i.ticket.title %></h6>
                 </p>
               </div>
               <div class="col-md-3">
@@ -38,11 +44,6 @@
               <div class="col-md-3">
                 <p>
                   <h6> <%= i.completed_time %> </h6>
-                </p>
-              </div>
-              <div class="col-md-3">
-                <p>
-                  <h6><%= link_to "View", report_exam_path(id: i.id)%></h6>
                 </p>
               </div>
             </div>
