@@ -49,8 +49,6 @@ class Guest::ExamController < ApplicationController
       history.save
 
       session.delete(:curr_history_id)
-      session.delete(:start_time)
-      puts "--------- history.completed_time: #{history.completed_time}"
 
       redirect_to histories_path
     end
