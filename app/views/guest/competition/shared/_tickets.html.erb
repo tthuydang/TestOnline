@@ -1,25 +1,22 @@
 <div class="col-md-4">
   <div class="card mb-4 shadow-sm">
     <% if ticket.image? %>
-      <%= image_tag ticket.image.url(:thumb), width: 221, height: 225 %>
+      <%= image_tag ticket.image.url(:thumb), width: 150, height: 150 %>
     <% else %>
-      <%= image_tag "learning_english.png", width: 221, height: 225 %>
+      <%= image_tag "learning_english.png", width: 150, height: 150 %>
     <% end %>
-    <div class="card-body" style="background-color: yellow">
-      <h5 style="color: red">
-        <%= link_to(truncate("#{ticket.title}", length: 20), confirm_path(:code => ticket.code), style: 'text-decoration: none;') %>
-      </h5>
-      <b class="card-text" style="color: blue">
-      <%= truncate("#{ticket.category.title}", length: 20) %>
-      </b>
-      <p class="card-text" style="color: gray; font-size: 15px;">
-        <%= truncate("#{ticket.description}", length: 26) %>
-      </p>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group">
-          <%= link_to "View", histories_path, class: "btn btn-sm btn-outline-secondary" %>
-          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-        </div>
+    <div>
+      <div class="card-body"><hr>
+        <h5 style="color: red">
+          <%= link_to(truncate("#{ticket.title}", length: 15), confirm_path(:code => ticket.code), style: 'text-decoration: none;') %>
+        </h5>
+        <b class="card-text" style="color: blue">
+          <%= truncate("#{ticket.category.title}", length: 20) %>
+        </b>
+        <p class="card-text" style="color: gray; font-size: 15px;">
+          <%= truncate("#{ticket.description}", length: 26) %>
+        </p>
+        <%= link_to "Start",confirm_path(:code => ticket.code), class: "btn btn-primary", style: "text-align: center;"%>
       </div>
     </div>
   </div>
