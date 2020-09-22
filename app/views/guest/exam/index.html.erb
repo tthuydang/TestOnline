@@ -15,40 +15,40 @@
             <div id="ticket-code">
               <h3><%= @ticket.code %></h3>
             </div>
-        <%= form_tag finish_path, method: :post, onsubmit: "return stop_exam(this);", id: "form-example"  do %>
-            <div class="infor-ticket-example-ques-ans">
-              <div class="count-question">
-                <input type="text" id="total-question" value="<%= @questions.count %>" hidden >
-              </div>
-              <div class="time-quiz">
-                <div class="progress">
-                  <div id="time-bar-ticket" class="progress-bar" role="progressbar"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <%= form_tag finish_path, method: :post, onsubmit: "return stop_exam(this);", id: "form-example"  do %>
+              <div class="infor-ticket-example-ques-ans">
+                <div class="count-question">
+                  <input type="text" id="total-question" value="<%= @questions.count %>" hidden >
+                </div>
+                <div class="time-quiz">
+                  <div class="progress">
+                    <div id="time-bar-ticket" class="progress-bar" role="progressbar"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div>
+                  <span id="pause" class="timer-exam"><i class="fa fa-pause"></i></span>
+                  <span id="resume" class="timer-exam"><i class="fa fa-play"></i></span>
+                </div>
+                <div class="time-ticket">
+                  <input type="text" id="time-exam" value="<%= @ticket.max_time.to_s.split[1].slice(0..1).to_i * 60 + @ticket.max_time.to_s.split[1].slice(3..4).to_i%>"hidden >
+                  <span id="count"></span>
                 </div>
               </div>
-              <div>
-                <span id="pause" class="timer-exam"><i class="fa fa-pause"></i></span>
-                <span id="resume" class="timer-exam"><i class="fa fa-play"></i></span>
+              <div class="ans-ques-group">
+                <% @ques_index = 0 %>
+                <%= render partial: "/guest/exam/shared/questions", collection: @questions.shuffle, as: :quest %>
               </div>
-              <div class="time-ticket">
-                <input type="text" id="time-exam" value="<%= @ticket.max_time.to_s.split[1].slice(0..1).to_i * 60 + @ticket.max_time.to_s.split[1].slice(3..4).to_i%>"hidden >
-                <span id="count"></span>
+              <div class="pagination-ticket">
+                <a id="prev" onclick="plusSlides(-1)">Prev</a>
+                <a id="next" onclick="plusSlides(1)">Next</a>
               </div>
-            </div>
-            <div class="ans-ques-group">
-              <% @ques_index = 0 %>
-              <%= render partial: "/guest/exam/shared/questions", collection: @questions.shuffle, as: :quest %>
-            </div>
-            <div class="pagination-ticket">
-              <a id="prev" onclick="plusSlides(-1)">Prev</a>
-              <a id="next" onclick="plusSlides(1)">Next</a>
-            </div>
-            <div style="float: right">
-              <%= link_to("Submit", finish_path(ticket_id: @ticket.id), data: { confirm: "Are you certain ?" }, class: "btn btn-sm btn-outline-secondary", 'data-toggle' => "tooltip", title:"Nộp bài", 'data-placement' => 'right') %>
-              <%#= f.submit "Submit bang form", data: { confirm: "Are you certain ?" }, class: "btn btn-sm btn-outline-secondary" %>
-              <input name="time_complete" id="time-complete" value="", hidden>
-              <button id="btn-submit" type="submit" name="submit" class="btn btn-primary">Submit bang form</button>
-            </div>
-        <% end %>
+              <div style="float: right">
+                <%#= link_to("Submit", finish_path(ticket_id: @ticket.id), data: { confirm: "Are you certain ?" }, class: "btn btn-sm btn-outline-secondary", 'data-toggle' => "tooltip", title:"Nộp bài", 'data-placement' => 'right') %>
+                <%#= f.submit "Submit bang form", data: { confirm: "Are you certain ?" }, class: "btn btn-sm btn-outline-secondary" %>
+                <input name="time_complete" id="time-complete" value="", hidden>
+                <button id="btn-submit" type="submit" name="submit" class="btn btn-sm btn-outline-secondary">Submit</button>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
