@@ -4,11 +4,13 @@ Rails.application.routes.draw do
 
   scope module: "guest" do
     root "tickets#index"
+
     resources :histories
     resources :exam
     resources :users
     resources :competition
     resources :charges
+
     get "intro" => "/guest/tickets#intro"
     get "oncheckboxchange" => "/guest/exam#oncheckboxchange"
     post "finish" => "/guest/exam#finish"
