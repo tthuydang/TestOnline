@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :charges
     get "intro" => "/guest/tickets#intro"
     get "oncheckboxchange" => "/guest/exam#oncheckboxchange"
-    get "finish" => "/guest/exam#finish"
+    post "finish" => "/guest/exam#finish"
     get "confirm" => "/guest/competition#confirm"
     post "confirm_code" => "/guest/competition#confirm_code"
     get "report_exam" => "/guest/histories#report_exam"
