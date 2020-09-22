@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users
     resources :competition
     resources :charges
+
     get "intro" => "/guest/tickets#intro"
     get "oncheckboxchange" => "/guest/exam#oncheckboxchange"
     post "finish" => "/guest/exam#finish"
