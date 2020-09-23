@@ -25,9 +25,20 @@
           <p>Steps to create a subticket.</p>
         </div>
         <div class="col-sm-4">
-          < h3><%= link_to "How do you set up a competition?",create_subticket_path %></>
+          <h3><%= link_to "How do you set up a competition?",create_competition_path %></h3>
+          <p>The options of a subticket.</p>
           <p>Steps to create a subticket.</p>
         </div>
       </div>
     </div>
+    <div class="help-btn">
+      <p><%= link_to "Home", root_path, class:"btn btn-primary" %></p>
+    </div>
   </body>
+  <style>
+    .help-btn{
+      margin-top: 150px;
+      display:flex;
+      justify-content: center;
+    }
+  </style>

@@ -1,6 +1,0 @@
-<% if ans.is_correct %>
-  <a style="color: green"><%= "#{@options[@ans_index += 1]}. #{ans.answer}" %></a>
-<% else %>
-  <a><%= "#{@options[@ans_index += 1]}. #{ans.answer}" %></a>
-<% end %>
-<br>
