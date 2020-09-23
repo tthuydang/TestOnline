@@ -6,7 +6,7 @@ class Guest::ExamController < ApplicationController
       @ticket = Ticket.where(code: params[:code], delete_at: nil).first
       @questions = Question.where(ticket_id: @ticket.id, delete_at: nil)
     rescue => exception
-      puts "---- error nè: #{exception}"
+      puts "---- error: #{exception}"
       redirect_to root_path
     end
   end
