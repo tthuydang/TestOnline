@@ -25,9 +25,7 @@
     <%= f.label :max_time %>
     <%= f.time_select :max_time, class: "form-control" %>
   </p>
-
   <hr>
-
   <p>
     <%= f.label :competition_code %>
     <%= f.text_field :competition_code, class: "form-control" %>
@@ -40,14 +38,11 @@
     <%= f.label :finish_date %>
     <%= f.datetime_field :finish_date, class: "form-control" %>
   </p>
-
   <hr>
-
   <p>
     <%= f.label :file_question, "File question" %>
     <%= f.file_field :file_question, accept: "text/plain", class: "form-control" %>
   </p>
-
   <p>
     <%= f.submit class: "btn btn-success" %>
   </p>
