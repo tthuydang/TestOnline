@@ -40,7 +40,7 @@
         <% (1..count).each do |i| %>
           <span class="fa fa-star checked"></span>
         <% end %>
-        <%= link_to("Start", exam_index_path(:code =>@ticket.code), class: "btn btn-info form-control", style: "margin-top: 50px") %>
+        <%= link_to("Start", exam_index_path(:code =>@ticket.code), :target => "_blank", class: "btn btn-info form-control", style: "margin-top: 50px") %>
       </div>
     </div>
     <div class="col-md-2"></div>
