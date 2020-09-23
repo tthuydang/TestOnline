@@ -87,9 +87,6 @@ class Guest::ExamController < ApplicationController
   end
 
   def completed_time(time_complete_miliseconds)
-<<<<<<< HEAD
-    "#{time_complete_miliseconds / (1000 * 60 * 60) % 60}:#{time_complete_miliseconds / (1000 * 60) % 60}:#{time_complete_miliseconds / 1000 % 60}"
-=======
     time_h = time_complete_miliseconds / (1000 * 60 * 60) % 60
     time_m = time_complete_miliseconds / (1000 * 60) % 60
     time_s = time_complete_miliseconds / 1000 % 60
@@ -99,7 +96,6 @@ class Guest::ExamController < ApplicationController
     time_s = "0#{time_s}" if time_s.to_s.length == 1
 
     "#{time_h}:#{time_m}:#{time_s}"
->>>>>>> master
   end
 
   def is_passed(total_question, total_correct)
