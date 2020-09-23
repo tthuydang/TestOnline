@@ -22,6 +22,12 @@ class Guest::ExamController < ApplicationController
     end
     curr_details = HistoryDetail.where(history_id: session[:curr_history_id], answer_id: curr_answer.id, question_id: curr_answer.question_id).first
     if curr_details == nil # nếu tích vô thì lưu
+      # nếu là radio button
+      if Question.find_by(id: curr_answer.question_id).answers.where(is_correct: true).size == 1
+        ht = HistoryDetail.find_by(history_id: curr_history.id, question_id: curr_answer.question_id)
+        ht.destroy if ht != nil
+      end
+
       details = HistoryDetail.new
       details.history_id = session[:curr_history_id]
       details.answer_id = curr_answer.id
@@ -81,7 +87,19 @@ class Guest::ExamController < ApplicationController
   end
 
   def completed_time(time_complete_miliseconds)
+<<<<<<< HEAD
     "#{time_complete_miliseconds / (1000 * 60 * 60) % 60}:#{time_complete_miliseconds / (1000 * 60) % 60}:#{time_complete_miliseconds / 1000 % 60}"
+=======
+    time_h = time_complete_miliseconds / (1000 * 60 * 60) % 60
+    time_m = time_complete_miliseconds / (1000 * 60) % 60
+    time_s = time_complete_miliseconds / 1000 % 60
+
+    time_h = "0#{time_h}" if time_h.to_s.length == 1
+    time_m = "0#{time_m}" if time_m.to_s.length == 1
+    time_s = "0#{time_s}" if time_s.to_s.length == 1
+
+    "#{time_h}:#{time_m}:#{time_s}"
+>>>>>>> master
   end
 
   def is_passed(total_question, total_correct)

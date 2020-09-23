@@ -7,7 +7,7 @@
     <% end %>
     <div class="card-body"><hr>
       <h5 style="color: red">
-        <%= link_to(truncate("#{ticket.title}", length: 20), intro_path(:code => ticket.code), style: 'text-decoration: none;') %>
+        <%= link_to(truncate("#{ticket.title}", length: 15), intro_path(:code => ticket.code), style: 'text-decoration: none;') %>
       </h5>
       <b class="card-text" style="color: blue">
         <%= truncate("#{ticket.category.title}", length: 20) %>
