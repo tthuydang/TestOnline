@@ -85,7 +85,6 @@
           padding-left: 4px;
           flex: 1 0 13%;
         }
-        
         .mySlides {display: none}
         #next, #prev{
           text-align: center;
@@ -98,7 +97,7 @@
           margin-bottom: 20px;
         }
         #next:hover, #prev:hover{
-          background: #ffe5ae;
+          background: #FFE5AE;
         }
         .fade {
           -webkit-animation-name: fade;
@@ -167,7 +166,6 @@
         var width_sec = document.getElementById('time-exam').value;
         var resume = document.getElementById('resume');
         var pause = document.getElementById('pause');
-
         // var time_in_minutes = 70;
         var current_time = Date.parse(new Date());
         var deadline = new Date(current_time + count);
@@ -187,10 +185,10 @@
           function update_clock(){
             var t = time_remaining(endtime);
             document.getElementById('count').innerHTML = t.hours + ":" + t.minutes + ":" + t.seconds;
-            if(t.total < 0){ 
+            if(t.total < 0){
               alert('You have run out of time!');
               document.forms["form-example"].submit();
-              clearInterval(timeinterval); 
+              clearInterval(timeinterval);
             }else{
               document.getElementById('time-complete').value = t.total;
               width -= 100 / (60 * width_sec);
@@ -236,19 +234,15 @@
         // handle pause and resume button clicks
         pause.onclick = pause_clock;
         resume.onclick = resume_clock;
-        
         //Slide-show-ticket
         var slideIndex = 1;
         showSlides(slideIndex);
-        
         function plusSlides(n) {
           showSlides(slideIndex += n);
         }
-        
         function showSlides(n) {
           var i;
           var slides = document.getElementsByClassName("mySlides");
-        
           if (n >= slides.length) {
             document.getElementById('next').style.display = "none";
             // document.getElementById('prev').style.display = "block";

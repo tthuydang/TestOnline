@@ -15,13 +15,11 @@ class Guest::ExamController < ApplicationController
     create_history_and_session
     curr_answer = Answer.find(params[:answer_id])
     curr_history = History.find(session[:curr_history_id])
-
     # nếu session đã tồn tại nhưng là của đề thi khác(do lần trước chưa submit) thì xóa session đi
     if curr_history != nil && curr_answer.question.ticket_id != curr_history.ticket_id
       session.delete(:curr_history_id)
       create_history_and_session
     end
-
     curr_details = HistoryDetail.where(history_id: session[:curr_history_id], answer_id: curr_answer.id, question_id: curr_answer.question_id).first
     if curr_details == nil # nếu tích vô thì lưu
       # nếu là radio button
@@ -53,9 +51,7 @@ class Guest::ExamController < ApplicationController
       history.completed_time = completed_time(params[:time_complete].to_i)
       history.updated_at = Time.now
       history.save
-
       session.delete(:curr_history_id)
-
       redirect_to histories_path
     end
   end
