@@ -24,6 +24,12 @@ class Guest::ExamController < ApplicationController
 
     curr_details = HistoryDetail.where(history_id: session[:curr_history_id], answer_id: curr_answer.id, question_id: curr_answer.question_id).first
     if curr_details == nil # nếu tích vô thì lưu
+      # nếu là radio button
+      if Question.find_by(id: curr_answer.question_id).answers.where(is_correct: true).size == 1
+        ht = HistoryDetail.find_by(history_id: curr_history.id, question_id: curr_answer.question_id)
+        ht.destroy if ht != nil
+      end
+
       details = HistoryDetail.new
       details.history_id = session[:curr_history_id]
       details.answer_id = curr_answer.id
