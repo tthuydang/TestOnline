@@ -18,26 +18,29 @@
         <p><b>Description: </b><%= @ticket.description %></p>
         <% total_user = History.where(ticket_id: @ticket.id).size %>
         <div class="bar-review"></div>
-        <% total_user_is_passed = History.where(ticket_id: @ticket.id).where(is_passed: true).size %>
-        <% count = 0
-        percent = total_user_is_passed*100 / total_user  
-        if percent > 80
-        count = 1
-        elsif percent > 60 && percent < 80 
-          count = 2
-        elsif percent > 40 && percent < 60 
-          count = 3
-        elsif percent > 20 && percent  < 40 
-          count = 4
-        elsif percent < 20
-          count = 5
+        <%
+        total_user_is_passed = History.where(ticket_id: @ticket.id).where(is_passed: true).size
+        count = 0
+        if total_user != 0
+          percent = total_user_is_passed*100 / total_user  
+          if percent > 80
+          count = 1
+          elsif percent > 60 && percent < 80 
+            count = 2
+          elsif percent > 40 && percent < 60 
+            count = 3
+          elsif percent > 20 && percent  < 40 
+            count = 4
+          elsif percent < 20
+            count = 5
+          end
         end
         %>
         <span class="heading"><b>Difficult level: </b></span>
         <% (1..count).each do |i| %>
           <span class="fa fa-star checked"></span>
         <% end %>
-        <%= link_to("Start", exam_index_path(:code =>@ticket.code), class: "btn btn-info form-control", style: "margin-top: 50px") %>
+        <%= link_to("Start", exam_index_path(:code =>@ticket.code), :target => "_blank", class: "btn btn-info form-control", style: "margin-top: 50px") %>
       </div>
     </div>
     <div class="col-md-2"></div>

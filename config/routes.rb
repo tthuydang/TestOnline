@@ -26,9 +26,10 @@ Rails.application.routes.draw do
     resources :questions
     resources :histories
 
-    get "create_competition" => "/helps/tickets#create_competition"
-    get "create_subticket" => "/helps/tickets#create_subticket"
-    get "create_ticket" => "/helps/tickets#create_ticket"
+    get "create_competition" => "/helps/create_competition"
+    get "create_subticket" => "/helps/create_subticket"
+    get "create_ticket" => "/helps/create_ticket"
+
     get "help" => "/creator/tickets#help"
     post "importfile" => "/creator/questions#importfile"
     get "download_subticket" => "/creator/subtickets#download_subticket"
