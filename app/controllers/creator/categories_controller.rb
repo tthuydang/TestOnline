@@ -40,7 +40,7 @@ class Creator::CategoriesController < ApplicationController
       @category.destroy
       flash[:notice] = "Category successfully deleted."
     else
-      flash[:notice] = "Can't delete this category."
+      flash[:notice] = "Cannot delete this category."
     end
     redirect_to categories_path
   end
