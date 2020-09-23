@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.6"
 gem "responders"
-gem "htmltoword", git: "https://github.com/karnov/htmltoword"
 gem "font_awesome5_rails"
 gem "pagy" # phan trang
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
