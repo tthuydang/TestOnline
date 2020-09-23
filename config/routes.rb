@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :competition
     resources :charges
 
+    get "create_competition" => "/guest/tickets#create_competition"
+    get "create_subticket" => "/guest/tickets#create_subticket"
+    get "create_ticket" => "/guest/tickets#create_ticket"
+    get "help" => "/guest/tickets#help"
     get "intro" => "/guest/tickets#intro"
     get "oncheckboxchange" => "/guest/exam#oncheckboxchange"
     post "finish" => "/guest/exam#finish"
@@ -26,6 +30,9 @@ Rails.application.routes.draw do
     resources :questions
     resources :histories
 
+    get "create_competition" => "/creator/tickets#create_competition"
+    get "create_subticket" => "/creator/tickets#create_subticket"
+    get "create_ticket" => "/creator/tickets#create_ticket"
     get "help" => "/creator/tickets#help"
     post "importfile" => "/creator/questions#importfile"
     get "download_subticket" => "/creator/subtickets#download_subticket"

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Quiz Online Help</h1>
+    </div>
+    <div class="container" >
+      <h2 style="text-align: center; color: #007bff;">How do you set up a competition?</h2>
+      <hr>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <p><b>1. The options of a competition.</b></p>
+          <p>- Competition code: <b>Competition activation code.</b></p>
+          <p>- Start date: <b> Time to begin the competition.</b></p>
+          <p>- Finish date: <b> Time to end the competition.</b></p>
+        </div>
+        <div class="col-sm">
+          <p><b>2. Steps to create a ticket.</b></p>
+          <p>- Step 1: Click <b><i class="fas fa-cog"></i> in page your ticket.</b></p>
+          <p>- Step 2: Click <b>"Edit"</b></p>
+          <p>- Step 3: Fill out the information ticket <b><i>"Competition code, Start date, Finish date".</i></b></p >
+          <p>- Step 3: Click <b>"Update ticket".</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="help-btn">
+      <p><%= link_to "Home", root_path, class:"btn btn-primary" %></p>
+      <p><%= link_to "Back", help_path, class:"btn btn-primary" %></p>
+    </div>
+  </body>
+  <style>
+    .help-btn{
+      display:flex;
+      justify-content: center;
+    }
+    .help-btn p {
+      margin: 10px;
+      padding: 10px;
+    }
+  </style>
