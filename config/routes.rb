@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :questions
     resources :histories
 
+    get "help" => "/creator/tickets#help"
     post "importfile" => "/creator/questions#importfile"
     get "download_subticket" => "/creator/subtickets#download_subticket"
     get "creator/history" => "/creator/histories#history"
