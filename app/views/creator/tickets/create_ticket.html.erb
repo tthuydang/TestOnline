@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Quiz Online Help</h1>
+    </div>
+    <div class="container" >
+      <h2 style="text-align: center; color: #007bff;">How do you set up a ticket?</h2>
+      <hr>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <p><b>1. Instructions for placing import file data.</b></p>
+          <p><b> Format file</b></p>
+          <p>- Question: <b>Begin with the letter ABCD ...</b></p>
+          <p>- Content Question: <b>Begin with the letter ABCD ...</b></p>
+          <p>- Answer: <b> Begin with the letter ABCD ...</b></p>
+          <p>- Answer <b><i>"True"</i></b>: <b> Begin with the letter ABCD ...</b></p>
+          <p><b><i>Example: </i></b></p>
+        </div>
+        <div class="col-sm">
+          <p><b>2. Steps to create a ticket.</b></p>
+          <p>- Step 1: Click <b>"Add a new ticket"</b></p>
+          <p>- Step 2: Fill out the information ticket on the form.</p>
+          <p>- Step 3: Click <b>"Create ticket".</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="help-btn">
+      <p><%= link_to "Home", root_path, class:"btn btn-primary" %></p>
+      <p><%= link_to "Back", help_path, class:"btn btn-primary" %></p>
+    </div>
+  </body>
+  <style>
+    .help-btn{
+      display:flex;
+      justify-content: center;
+    }
+    .help-btn p {
+      margin: 10px;
+      padding: 10px;
+    }
+  </style>
