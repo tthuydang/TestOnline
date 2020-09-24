@@ -1,10 +1,12 @@
 <div class=" col-12 col-sm-6 col-md-4">
   <div class="card mb-4 shadow-sm">
-    <% if ticket.image? %>
-      <%= image_tag ticket.image.url(:thumb), width: 150, height: 150 %>
-    <% else %>
-      <%= image_tag "learning_english.png", width: 150, height: 150 %>
-    <% end %>
+    <div id="img-ticket" style="width:150; height:150;" >
+      <% if ticket.image? %>
+        <%= image_tag ticket.image.url(:thumb), width: 203, height: 215 %>
+      <% else %>
+        <%= image_tag "learning_english.png", width: 203, height: 215 %>
+      <% end %>
+    </div>
     <div class="card-body"><hr>
       <h5 style="color: red">
         <%= link_to(truncate("#{ticket.title}", length: 15), intro_path(:code => ticket.code), style: 'text-decoration: none;') %>
