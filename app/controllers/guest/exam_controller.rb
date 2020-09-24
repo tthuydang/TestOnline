@@ -87,13 +87,11 @@ class Guest::ExamController < ApplicationController
   end
 
   def completed_time(time_complete_miliseconds)
-    time_h = time_complete_miliseconds / (1000 * 60 * 60) % 60
-    time_m = time_complete_miliseconds / (1000 * 60) % 60
-    time_s = time_complete_miliseconds / 1000 % 60
-
-    time_h = "0#{time_h}" if time_h.to_s.length == 1
-    time_m = "0#{time_m}" if time_m.to_s.length == 1
-    time_s = "0#{time_s}" if time_s.to_s.length == 1
+    time = "#{time_complete_miliseconds / (1000 * 60 * 60) % 60 }:#{time_complete_miliseconds / (1000 * 60) % 60}:#{time_complete_miliseconds / 1000 % 60}"
+    times = time.split(":")
+    time_h = times[0].to_i < 10 ? "0#{times[0]}" : "#{times[0]}"
+    time_m = times[1].to_i < 10 ? "0#{times[1]}" : "#{times[1]}"
+    time_s = times[2].to_i < 10 ? "0#{times[2]}" : "#{times[2]}"
 
     "#{time_h}:#{time_m}:#{time_s}"
   end
