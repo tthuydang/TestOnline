@@ -74,7 +74,6 @@ Rails.application.configure do
   #   :authentication => "plain",
   #   :enable_starttls_auto => true,
   # }
-  config.secret_key_base = ENV["secret_key_base"]
   config.action_mailer.default_url_options = { host: "quizonline-tomosia.herokuapp.com" }
   # config.action_mailer.default_url_options = { :host => "localhost:3000" }
   config.action_mailer.delivery_method = :smtp
