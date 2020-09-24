@@ -190,7 +190,7 @@
               document.forms["form-example"].submit();
               clearInterval(timeinterval);
             }else{
-              document.getElementById('time-complete').value = t.total;
+              document.getElementById('time-complete').value = count - t.total;
               width -= 100 / (60 * width_sec);
               progressbar.style.width = width + "%";
               if (t.hours == 0 && t.minutes < 10 && t.minutes > 5){
