@@ -110,7 +110,7 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.secret_key_base = ENV["secret_key_base"]
-  config.action_mailer.default_url_options = { host: "https://quizonline-tomosia.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "quizonline-tomosia.herokuapp.com" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -122,5 +122,6 @@ Rails.application.configure do
     enable_starttls_auto: true,
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"],
+    domain: "quizonline-tomosia.herokuapp.com",
   }
 end
