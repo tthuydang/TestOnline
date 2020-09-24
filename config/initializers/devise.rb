@@ -240,7 +240,7 @@ Devise.setup do |config|
   # config.encryptor = :sha512
 
   config.mailer_sender = "hotro.testonline@gmail.com"
-
+  config.mailer = "Devise::Mailer"
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
