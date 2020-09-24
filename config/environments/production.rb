@@ -124,4 +124,5 @@ Rails.application.configure do
     password: ENV["GMAIL_PASSWORD"],
     domain: "quizonline-tomosia.herokuapp.com",
   }
+  ActionMailer::Base.delivery_method = :smtp
 end
