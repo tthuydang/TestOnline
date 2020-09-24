@@ -110,18 +110,17 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.secret_key_base = ENV["secret_key_base"]
-  config.action_mailer.default_url_options = { host: "quizonline-tomosia.herokuapp.com" }
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.smtp_settings = {
+  host = "https://quizonline-tomosia.herokuapp.com"
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
     address: "smtp.gmail.com",
-    port: 587,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"],
-    authentication: "plain",
+    port: "587",
+    authentication: :plain,
+    user_name: "vovanlong1997@gmail.com",
+    password: "lsfpewvsmwxtgoax",
+    domain: "heroku.com",
     enable_starttls_auto: true,
-    domain: "quizonline-tomosia.herokuapp.com",
   }
 end
