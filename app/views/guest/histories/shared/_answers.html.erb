@@ -1,8 +1,16 @@
 <p>
   <b><%= "#{@options[@ans_index += 1]}. " %></b>
   <% if @answers_id.include?(ans.id) %>
-    <b style="color:green"><%= ans.answer %></b>
+    <% if ans.is_correct == false %>
+      <b style="color:red"><%= ans.answer %> <i>(False)</i></b>
+    <% elsif ans.is_correct == true %>
+      <b style="color:green"><%= ans.answer %></b>
+    <% end %>
   <% else %>
-    <%= ans.answer %>
+    <% if ans.is_correct == true %>
+      <b style="color:green"><%= ans.answer %> <i>(True)</i></b>
+    <% else %>
+      <%= ans.answer %>
+    <% end %>
   <% end %>
 </p>

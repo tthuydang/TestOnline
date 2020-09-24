@@ -75,7 +75,7 @@ Rails.application.configure do
   #   :enable_starttls_auto => true,
   # }
   config.action_mailer.default_url_options = { host: "quizonline-tomosia.herokuapp.com" }
-  # config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  #config.action_mailer.default_url_options = { :host => "localhost:3000" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -83,8 +83,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"],
+    user_name: "supteamtomosia@gmail.com",
+    password: "team2020",
     authentication: "plain",
     enable_starttls_auto: true,
     domain: "quizonline-tomosia.herokuapp.com",

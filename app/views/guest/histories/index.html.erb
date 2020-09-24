@@ -33,7 +33,7 @@
               </div>
               <div class="col-md-3">
                 <p>
-                  <h6><%= i.ticket.title %></h6>
+                  <h6><%= i.completed_time %></h6>
                 </p>
               </div>
               <div class="col-md-3">
@@ -43,7 +43,7 @@
               </div>
               <div class="col-md-3">
                 <p>
-                  <h6> <%= i.completed_time %> </h6>
+                  <h6><%= link_to "View", report_exam_path(id: i.id) %></h6>
                 </p>
               </div>
             </div>
