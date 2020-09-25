@@ -8,9 +8,13 @@ class Guest::HistoriesController < ApplicationController
   end
 
   def report_exam
-    details = HistoryDetail.where(history_id: params[:id])
-    @code_exam = details.first.history.ticket.code
-    @answers_id = details.map(&:answer_id) # mang answer_id cac dap an dc chon
-    @questions = details.first.history.ticket.questions
+    begin
+      details = History.where(user_id: current_user.id, id: params[:id]).first.history_details
+      @code_exam = details.first.history.ticket.code
+      @answers_id = details.map(&:answer_id) # mang answer_id cac dap an dc chon
+      @questions = details.first.history.ticket.questions
+    rescue => exception
+      redirect_to root_path
+    end
   end
 end
