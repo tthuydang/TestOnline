@@ -5,6 +5,10 @@ class Guest::ExamController < ApplicationController
     begin
       @ticket = Ticket.where(code: params[:code], delete_at: nil).first
       @questions = Question.where(ticket_id: @ticket.id, delete_at: nil)
+      if @questions.size == 0
+        flash[:notice] = "This ticket is not ready."
+        redirect_back(fallback_location: intro_path)
+      end
     rescue => exception
       puts "---- error: #{exception}"
       redirect_to root_path
