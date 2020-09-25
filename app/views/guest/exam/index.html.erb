@@ -43,10 +43,10 @@
                 <a id="next" onclick="plusSlides(1)">Next</a>
               </div>
               <div style="float: right">
-                <%#= link_to("Submit", finish_path(ticket_id: @ticket.id), data: { confirm: "Are you certain ?" }, class: "btn btn-sm btn-outline-secondary", 'data-toggle' => "tooltip", title:"Nộp bài", 'data-placement' => 'right') %>
-                <%#= f.submit "Submit bang form", data: { confirm: "Are you certain ?" }, class: "btn btn-sm btn-outline-secondary" %>
                 <input name="time_complete" id="time-complete" value="", hidden>
-                <button id="btn-submit" type="submit" name="submit" class="btn btn-sm btn-outline-secondary">Submit</button>
+                <%#= link_to("Submit", finish_path(ticket_id: @ticket.id), data: { confirm: "Are you certain ?" }, class: "btn btn-sm btn-outline-secondary", 'data-toggle' => "tooltip", title:"Nộp bài", 'data-placement' => 'right') %>
+                <%= submit_tag "Submit", data: { confirm: "Are you certain ?" }, class: "btn btn-sm btn-secondary" %>
+                <!-- button id="btn-submit" type="submit" name="submit" class="btn btn-sm btn-secondary">Submit</!-->
               </div>
             <% end %>
           </div>
