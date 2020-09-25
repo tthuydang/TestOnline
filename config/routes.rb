@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :questions
     resources :histories
 
+    get "report_exam" => "/creator/histories#report_exam"
     get "create_competition" => "/creator/tickets#create_competition"
     get "create_subticket" => "/creator/tickets#create_subticket"
     get "create_ticket" => "/creator/tickets#create_ticket"

@@ -1,0 +1,62 @@
+<!--Header -->
+<div>
+  <%= render "shared/navigation" %>
+  <%= image_tag("cambridge_banner.jpg", width:"100%") %>
+  <p class="notice"><% notice %></p>
+  <p class="alert"><% alert %> </p>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:0%">
+    <div class="col-md-2">
+      <%= render "shared/menu" %>
+    </div>
+    <div class="col-md-8">
+      <%= render("shared/alert") %>
+      <!--Body -->
+      <h1 style="color: gray">Your histories: </h1>
+      <br>
+      <% @histories.each do |i| %>
+        <div style="margin-bottom: 80px; padding: 10px; border-width:2px; border-style:outset;">
+          <h3 style="color: gray"> <%= i.ticket.code %></h3>
+          <p style="color: gray"> <%= i.total_question %> Question  | Time: <%= i.ticket.max_time.to_s.split[1] %> | Date: <%= i.updated_at.to_s.split[0].split("-")[2]+"/"+i.updated_at.to_s.split[0].split("-")[1]+"/"+i.updated_at.to_s.split[0].split("-")[0] %> </p>
+          <div class="container-correct">
+            <div class="row">
+              <div class="col-md-3">
+                <p>
+                  <h6><% if i.is_passed == true  %>
+                      <h5 style="color: green"> PASSED </h5>
+                    <% else %>
+                      <h5 style="color: red"> FAILED </h5>
+                    <% end %>
+                  </h6>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <h6><%= i.completed_time %></h6>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <h6 style="color: black"><%= (i.total_correct * 100) / i.total_question  %>% Correct</h6>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <h6><%= link_to "View", report_exam_path(id: i.id) %></h6>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!--Footer -->
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+<div class="">
+  <div class="row" style="padding-top:5%;">
+    <%= render("shared/footer") %>
+  </div>
+</div>
