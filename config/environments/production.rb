@@ -112,7 +112,7 @@ Rails.application.configure do
   config.secret_key_base = ENV["secret_key_base"]
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = "https://quizonline-nhathuy.herokuapp.com"
+  host = "https://quizonline-tomosia.herokuapp.com"
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     address: "smtp.gmail.com",
