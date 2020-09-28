@@ -8,6 +8,9 @@ class Guest::ExamController < ApplicationController
       if @questions.size == 0
         flash[:notice] = "This ticket is not ready."
         redirect_back(fallback_location: intro_path)
+      elsif session[:curr_ticket_code] != nil
+        flash[:notice] = "Please submit ticket #{session[:curr_ticket_code]} and try again!"
+        redirect_back(fallback_location: intro_path)
       end
     rescue => exception
       puts "---- error: #{exception}"
@@ -55,7 +58,10 @@ class Guest::ExamController < ApplicationController
       history.completed_time = completed_time(params[:time_complete].to_i)
       history.updated_at = Time.now
       history.save
+
       session.delete(:curr_history_id)
+      session.delete(:curr_ticket_code)
+
       redirect_to histories_path
     end
   end
@@ -75,6 +81,7 @@ class Guest::ExamController < ApplicationController
       curr_history.updated_at = Time.now
       if curr_history.save
         session[:curr_history_id] = curr_history.id
+        session[:curr_ticket_code] = Ticket.find(params[:ticket_id]).code
       end
     end
   end
