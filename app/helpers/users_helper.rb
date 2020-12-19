@@ -4,7 +4,7 @@ module UsersHelper
     if user.avatar?
       image_tag user.avatar.url(:thumb), width: size, :style => "border-radius: 50%;"
     else
-      image_tag "default.jpg", width: size, :style => "border-radius: 50%;"
+      image_tag "default.png", width: size, :style => "border-radius: 50%;"
     end
   end
 end

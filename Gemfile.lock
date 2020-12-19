@@ -144,7 +144,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.5)
-    puma (4.3.5)
+    puma (5.1.1)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -260,13 +260,14 @@ DEPENDENCIES
   figaro
   font_awesome5_rails
   jbuilder (~> 2.7)
+  letter_opener
   letter_opener_web
   listen (~> 3.2)
   mini_magick
   pagy
   pg (>= 0.18, < 2.0)
   pry
-  puma (~> 4.1)
+  puma (~> 5.1, >= 5.1.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   responders
   sass-rails (>= 6)
